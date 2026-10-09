@@ -53,6 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
             orientation: 'vertical',
             gestureOrientation: 'vertical',
             smoothWheel: true,
+            syncTouch: true,
+            syncTouchLerp: 0.08,
             wheelMultiplier: 1.0,
             touchMultiplier: 1.0,
             infinite: false
@@ -273,7 +275,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Start playback
-        window.startAudioPlayback = function() {
+        window.startAudioPlayback = function () {
             state.isPlaying = true;
             updateAudioUI();
 
@@ -287,7 +289,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         // Pause playback
-        window.pauseAudio = function() {
+        window.pauseAudio = function () {
             state.isPlaying = false;
             audio.pause();
             stopHarmonicSynthesizer();
@@ -359,7 +361,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 state.synthInterval = null;
             }
             if (state.synthContext) {
-                try { state.synthContext.close(); } catch (e) {}
+                try { state.synthContext.close(); } catch (e) { }
                 state.synthContext = null;
             }
             state.usingSynth = false;
@@ -501,13 +503,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Update device hints
         if (smartBadge) {
-            smartBadge.textContent = isApple 
-                ? 'One tap adds directly to Apple Calendar' 
+            smartBadge.textContent = isApple
+                ? 'One tap adds directly to Apple Calendar'
                 : 'One tap adds directly to Google Calendar';
         }
         if (altLink) {
-            altLink.textContent = isApple 
-                ? 'Using Google Calendar? Tap here ↗' 
+            altLink.textContent = isApple
+                ? 'Using Google Calendar? Tap here ↗'
                 : 'Download .ICS file instead';
         }
 
@@ -706,7 +708,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function initializeScrollAnimations() {
         const revealElements = document.querySelectorAll('.reveal-on-scroll');
 
-        // On mobile & touch screens, reveal immediately for instant, 100% fluid native scrolling
+        // On mobile & touch screens, reveal immediately for instant, 100% fluid scrolling
         const isMobileOrTouch = window.innerWidth <= 768 ||
             window.matchMedia('(max-width: 768px)').matches ||
             ('ontouchstart' in window) ||
@@ -726,7 +728,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }, {
             threshold: 0.04,
-            rootMargin: '0px 0px 80px 0px' // Triggers smoothly before element enters view
+            rootMargin: '0px 0px 80px 0px'
         });
 
         revealElements.forEach(el => {
