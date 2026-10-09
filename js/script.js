@@ -705,8 +705,14 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     function initializeScrollAnimations() {
         const revealElements = document.querySelectorAll('.reveal-on-scroll');
-        if (!('IntersectionObserver' in window)) {
-            // Fallback: reveal all immediately if unsupported
+
+        // On mobile & touch screens, reveal immediately for instant, 100% fluid native scrolling
+        const isMobileOrTouch = window.innerWidth <= 768 ||
+            window.matchMedia('(max-width: 768px)').matches ||
+            ('ontouchstart' in window) ||
+            (navigator.maxTouchPoints > 0);
+
+        if (isMobileOrTouch || !('IntersectionObserver' in window)) {
             revealElements.forEach(el => el.classList.add('revealed'));
             return;
         }
@@ -719,8 +725,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }, {
-            threshold: 0.12,
-            rootMargin: '0px 0px -40px 0px'
+            threshold: 0.04,
+            rootMargin: '0px 0px 80px 0px' // Triggers smoothly before element enters view
         });
 
         revealElements.forEach(el => {

@@ -553,7 +553,7 @@ body {
     position: relative;
     width: 100%;
     min-height: 100vh;
-    min-height: 100dvh;
+    min-height: 100svh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -627,17 +627,23 @@ body {
     justify-content: center;
 }
 
-/* Subtle Scroll Reveal */
+/* Clean Opacity Reveal (Anchors content solidly without vertical translation) */
 .reveal-on-scroll {
     opacity: 0;
-    transform: translateY(18px);
-    transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
-    will-change: opacity, transform;
+    transition: opacity 0.4s ease;
 }
 .reveal-on-scroll.revealed {
     opacity: 1;
-    transform: translateY(0);
-    will-change: auto;
+}
+
+/* Mobile & Touch: Always immediately visible with zero lag, zero delay, and zero displacement */
+@media (max-width: 768px), (pointer: coarse) {
+    .reveal-on-scroll {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+        will-change: auto !important;
+    }
 }
 
 /* Reusable Hairline Ornaments */
