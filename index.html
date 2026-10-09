@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en" class="is-locked">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Wedding Invitation | Dr. Favas & Ayesha • Dr. Fanseem & Rafna</title>
+    <meta name="description"
+        content="Wedding Invitation of Dr. Favas Hameed & Ayesha Amal and Dr. Fanseem Hameed & Rafna Noushad. Join us on 12 & 13 December 2026 in Calicut, Kerala.">
+
+    <!-- Preconnect & Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="is-locked">
+
+    <!-- ============================================================ -->
+    <!-- FALLING ROSE PETALS OVERLAY                                   -->
+    <!-- ============================================================ -->
+    <div class="petal-layer" id="petalLayer" aria-hidden="true"></div>
+
+    <!-- ============================================================ -->
+    <!-- FIXED MUSIC CONTROLLER (PINNED TO TOP)                        -->
+    <!-- ============================================================ -->
+    <div class="music-fab" id="musicFab" role="region" aria-label="Audio player control">
+        <button type="button" class="fab-btn" id="fabPlayToggle" aria-label="Play or pause wedding nasheed"
+            title="Play / Pause Nasheed">
+            <span class="fab-icon-playing" aria-hidden="true">
+                <span class="bar bar-1"></span>
+                <span class="bar bar-2"></span>
+                <span class="bar bar-3"></span>
+                <span class="bar bar-4"></span>
+            </span>
+            <span class="fab-icon-paused" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+                    <polygon points="6 4 19 12 6 20 6 4" />
+                </svg>
+            </span>
+        </button>
+    </div>
+
+    <!-- Hidden audio element pointing to wedding nasheed -->
+    <audio id="weddingAudio" src="audio/wedding-nasheed.mp3" preload="auto" loop></audio>
+
+    <!-- ============================================================ -->
+    <!-- FIXED DISCREET NAVIGATION (STICK ON BOTTOM SIDE)              -->
+    <!-- ============================================================ -->
+    <nav class="fixed-nav" id="fixedNav" aria-label="Quick invitation navigation">
+        <div class="nav-container">
+            <a href="#itinerary" class="nav-item" id="navItinerary">ITINERARY</a>
+            <span class="nav-dot" aria-hidden="true">•</span>
+            <a href="#calendar" class="nav-item" id="navCalendar">CALENDAR</a>
+        </div>
+    </nav>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 1: OPENING SCREEN                                    -->
+    <!-- Resembles the primary floral reference composition            -->
+    <!-- ============================================================ -->
+    <div class="opening-screen" id="openingScreen" role="dialog" aria-modal="true"
+        aria-label="Wedding Invitation Envelope">
+        <!-- Overlay Floral Frame -->
+        <div class="floral-decoration opening-floral-top" aria-hidden="true">
+            <img src="images/floral/floral-top-fade.png" alt="" class="floral-img floral-img-top">
+        </div>
+        <div class="floral-decoration opening-floral-bottom" aria-hidden="true">
+            <img src="images/floral/floral-bottom-fade.png" alt="" class="floral-img floral-img-bottom">
+        </div>
+
+        <!-- Center Content Card -->
+        <div class="opening-card">
+            <div class="opening-monogram" aria-hidden="true">
+                <span class="monogram-text">F & A • F & R</span>
+            </div>
+
+            <p class="opening-arabic" lang="ar" dir="rtl">بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ</p>
+
+            <p class="opening-eyebrow">THE WEDDING INVITATION</p>
+
+            <h1 class="opening-title">
+                <span class="opening-couple-name">Dr. Favas & Ayesha</span>
+                <span class="opening-ampersand">&amp;</span>
+                <span class="opening-couple-name">Dr. Fanseem & Rafna</span>
+            </h1>
+
+            <div class="gold-hairline-ornament" aria-hidden="true">
+                <span class="hairline-left"></span>
+                <span class="hairline-diamond">◆</span>
+                <span class="hairline-right"></span>
+            </div>
+
+            <p class="opening-date">12 &amp; 13 DECEMBER 2026</p>
+            <p class="opening-location">CALICUT, KERALA</p>
+
+            <div class="opening-cta-wrap">
+                <button type="button" class="btn-tap-open" id="btnTapOpen"
+                    aria-label="Tap to open the wedding invitation">
+                    <span class="btn-wax-seal" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18"
+                            height="18">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 6v12M8 12h8"></path>
+                        </svg>
+                    </span>
+                    <span class="btn-text">TAP TO OPEN</span>
+                </button>
+                <p class="tap-hint">Tap to open or scroll down • Music will begin</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- MAIN INVITATION CARD CONTAINER                               -->
+    <!-- One continuous luxury paper invitation                       -->
+    <!-- Every content page framed in all four corners (TL, TR, BL, BR) -->
+    <!-- ============================================================ -->
+    <main class="invitation-container" id="invitationContent">
+
+        <!-- ============================================================ -->
+        <!-- SECTION 2: COUPLE / HERO INTRODUCTION                       -->
+        <!-- ============================================================ -->
+        <section class="section section-hero" id="couple">
+            <!-- Four Corner Floral Frame (TL, TR, BL, BR) -->
+            <div class="corner-flower corner-flower-tl" aria-hidden="true">
+                <img src="images/floral/corner-flowers-tl.png" alt="">
+            </div>
+            <div class="corner-flower corner-flower-tr" aria-hidden="true">
+                <img src="images/floral/corner-flowers-tr.png" alt="">
+            </div>
+            <div class="corner-flower corner-flower-bl" aria-hidden="true">
+                <img src="images/floral/corner-flowers-bl.png" alt="">
+            </div>
+            <div class="corner-flower corner-flower-br" aria-hidden="true">
+                <img src="images/floral/corner-flowers-br.png" alt="">
+            </div>
+
+            <div class="section-inner hero-inner">
+                <p class="arabic-bismillah" lang="ar" dir="rtl">بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ</p>
+                <p class="section-eyebrow">IN THE NAME OF ALLAH, THE MOST BENEFICENT, THE MOST MERCIFUL</p>
+
+                <p class="invitation-lead">Together with our families, we cordially invite you to share our joy as we
+                    celebrate the wedding of</p>
+
+                <!-- Couple 1 Card -->
+                <div class="couple-card reveal-on-scroll">
+                    <h2 class="couple-name">Dr. Favas Hameed</h2>
+                    <p class="couple-parentage">S/o Dr. C. Hameed &amp; Subaida Hameed</p>
+                    <div class="couple-connector">
+                        <span class="connector-line"></span>
+                        <span class="connector-text">&amp;</span>
+                        <span class="connector-line"></span>
+                    </div>
+                    <h2 class="couple-name">Ayesha Amal</h2>
+                    <p class="couple-parentage">D/o Ibrahim Ponneth &amp; Saleena Mambra</p>
+                </div>
+
+                <!-- Gold Filigree Separator -->
+                <div class="gold-filigree-divider" aria-hidden="true">
+                    <span class="filigree-line"></span>
+                    <span class="filigree-knot">❦</span>
+                    <span class="filigree-line"></span>
+                </div>
+
+                <!-- Couple 2 Card -->
+                <div class="couple-card reveal-on-scroll">
+                    <h2 class="couple-name">Dr. Fanseem Hameed</h2>
+                    <p class="couple-parentage">S/o Dr. C. Hameed &amp; Subaida Hameed</p>
+                    <div class="couple-connector">
+                        <span class="connector-line"></span>
+                        <span class="connector-text">&amp;</span>
+                        <span class="connector-line"></span>
+                    </div>
+                    <h2 class="couple-name">Rafna Noushad</h2>
+                    <p class="couple-parentage">D/o Noushad K.T. &amp; Jaseena V.P.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 3: QURAN VERSE                                        -->
+        <!-- ============================================================ -->
+        <section class="section section-quran" id="quranVerse">
+            <!-- Four Corner Floral Frame (TL, TR, BL, BR) -->
+            <div class="corner-flower corner-flower-tl" aria-hidden="true">
+                <img src="images/floral/corner-flowers-tl.png" alt="">
+            </div>
+            <div class="corner-flower corner-flower-tr" aria-hidden="true">
+                <img src="images/floral/corner-flowers-tr.png" alt="">
+            </div>
+            <div class="corner-flower corner-flower-bl" aria-hidden="true">
+                <img src="images/floral/corner-flowers-bl.png" alt="">
+            </div>
+            <div class="corner-flower corner-flower-br" aria-hidden="true">
+                <img src="images/floral/corner-flowers-br.png" alt="">
+            </div>
+
+            <div class="section-inner quran-inner reveal-on-scroll">
+                <div class="quran-arch-frame">
+                    <div class="quran-emblem" aria-hidden="true">۝</div>
+                    <blockquote class="quran-quote">
+                        <p class="quran-arabic" lang="ar" dir="rtl">وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</p>
+                        <p class="quran-english">“And He placed between you affection and mercy.”</p>
+                        <cite class="quran-reference">Quran 30:21</cite>
+                    </blockquote>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ============================================================ -->
+        <!-- SECTION 6: ITINERARY                                         -->
+        <!-- ============================================================ -->
+        <section class="section section-itinerary" id="itinerary">
+            <!-- Four Corner Floral Frame (TL, TR, BL, BR) -->
+            <div class="corner-flower corner-flower-tl" aria-hidden="true">
+                <img src="images/floral/corner-flowers-tl.png" alt="">
+            </div>
+            <div class="corner-flower corner-flower-tr" aria-hidden="true">
+                <img src="images/floral/corner-flowers-tr.png" alt="">
+            </div>
+            <div class="corner-flower corner-flower-bl" aria-hidden="true">
+                <img src="images/floral/corner-flowers-bl.png" alt="">
+            </div>
+            <div class="corner-flower corner-flower-br" aria-hidden="true">
+                <img src="images/floral/corner-flowers-br.png" alt="">
+            </div>
+
+            <div class="section-inner reveal-on-scroll">
+                <p class="section-eyebrow">EVENT SCHEDULE</p>
+                <h2 class="section-heading">ITINERARY</h2>
+                <div class="gold-hairline-ornament" aria-hidden="true">
+                    <span class="hairline-left"></span>
+                    <span class="hairline-diamond">◆</span>
+                    <span class="hairline-right"></span>
+                </div>
+
+                <div class="itinerary-grid">
+                    <!-- Saturday Card -->
+                    <div class="itinerary-card">
+                        <div class="itinerary-card-header">
+                            <span class="itinerary-day-tag">DAY 1</span>
+                            <h3 class="itinerary-date">Saturday, 12 December 2026</h3>
+                        </div>
+                        <div class="itinerary-timeline">
+                            <div class="itinerary-entry">
+                                <div class="itinerary-time">5:00 PM</div>
+                                <div class="itinerary-detail">
+                                    <strong>Nikah Ceremony</strong>
+                                    <span>Solemnization of marriage</span>
+                                </div>
+                            </div>
+                            <div class="itinerary-entry">
+                                <div class="itinerary-time">After Nikah</div>
+                                <div class="itinerary-detail">
+                                    <strong>Walima Reception</strong>
+                                    <span>Celebratory dinner banquet</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="itinerary-venue-note">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16"
+                                height="16" aria-hidden="true">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <span>K-Hills Convention Centre • Ramanattukara, Calicut</span>
+                        </div>
+                    </div>
+
+                    <!-- Sunday Card -->
+                    <div class="itinerary-card">
+                        <div class="itinerary-card-header">
+                            <span class="itinerary-day-tag">DAY 2</span>
+                            <h3 class="itinerary-date">Sunday, 13 December 2026</h3>
+                        </div>
+                        <div class="itinerary-timeline">
+                            <div class="itinerary-entry">
+                                <div class="itinerary-time">1:00 PM</div>
+                                <div class="itinerary-detail">
+                                    <strong>Nikah Ceremony</strong>
+                                    <span>Solemnization of marriage</span>
+                                </div>
+                            </div>
+                            <div class="itinerary-entry">
+                                <div class="itinerary-time">After Nikah</div>
+                                <div class="itinerary-detail">
+                                    <strong>Walima Reception</strong>
+                                    <span>Traditional afternoon feast</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="itinerary-venue-note">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16"
+                                height="16" aria-hidden="true">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <span>At Residence • Meethalayancheri (H), Puthur, Vadakara</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 7: CALENDAR                                          -->
+        <!-- Select & Add to Calendar with unified universal button        -->
+        <!-- ============================================================ -->
+        <section class="section section-calendar" id="calendar">
+            <!-- Four Corner Floral Frame (TL, TR, BL, BR) -->
+            <div class="corner-flower corner-flower-tl" aria-hidden="true">
+                <img src="images/floral/corner-flowers-tl.png" alt="">
+            </div>
+            <div class="corner-flower corner-flower-tr" aria-hidden="true">
+                <img src="images/floral/corner-flowers-tr.png" alt="">
+            </div>
+            <div class="corner-flower corner-flower-bl" aria-hidden="true">
+                <img src="images/floral/corner-flowers-bl.png" alt="">
+            </div>
+            <div class="corner-flower corner-flower-br" aria-hidden="true">
+                <img src="images/floral/corner-flowers-br.png" alt="">
+            </div>
+
+            <div class="section-inner cal-interactive-inner reveal-on-scroll">
+                <p class="section-eyebrow cal-select-eyebrow">SAVE TO YOUR SCHEDULE</p>
+                <h2 class="cal-select-heading">Add to Calendar</h2>
+                <p class="cal-select-date">12 &amp; 13 December 2026</p>
+
+                <!-- Botanical Sprig Ornament matching reference -->
+                <div class="cal-sprig-ornament" aria-hidden="true">
+                    <svg viewBox="0 0 160 28" width="130" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 14h136" stroke="#c5a059" stroke-width="1.2" stroke-linecap="round" />
+                        <path d="M54 14c-5-8-15-7-18 0 3 7 13 8 18 0z" fill="rgba(197, 160, 89, 0.22)" stroke="#c5a059"
+                            stroke-width="1.1" />
+                        <path d="M66 14c-4-7-13-6-15 0 2 6 11 7 15 0z" fill="rgba(197, 160, 89, 0.22)" stroke="#c5a059"
+                            stroke-width="1.1" />
+                        <circle cx="80" cy="14" r="2.5" fill="#c5a059" />
+                        <path d="M94 14c4-7 13-6 15 0-2 6-11 7-15 0z" fill="rgba(197, 160, 89, 0.22)" stroke="#c5a059"
+                            stroke-width="1.1" />
+                        <path d="M106 14c5-8 15-7 18 0-3 7-13 8-18 0z" fill="rgba(197, 160, 89, 0.22)" stroke="#c5a059"
+                            stroke-width="1.1" />
+                    </svg>
+                </div>
+
+                <!-- Range Selector Pills -->
+                <div class="cal-selector-pills" role="radiogroup" aria-label="Select celebration to add to calendar">
+                    <button type="button" class="cal-pill-btn active" data-range="both" role="radio"
+                        aria-checked="true">
+                        <span>THE FULL WEEKEND (BOTH DAYS)</span>
+                    </button>
+                    <button type="button" class="cal-pill-btn" data-range="saturday" role="radio" aria-checked="false">
+                        <span>SATURDAY 12 DEC</span>
+                    </button>
+                    <button type="button" class="cal-pill-btn" data-range="sunday" role="radio" aria-checked="false">
+                        <span>SUNDAY 13 DEC</span>
+                    </button>
+                </div>
+
+                <!-- Dynamic Description -->
+                <p class="cal-selection-desc" id="calSelectionDesc">Adds both celebrations (Saturday at K-Hills &amp;
+                    Sunday at Residence) to your calendar.</p>
+
+                <!-- Single Universal Add to Calendar Button (Works for both iPhone & Android/Desktop) -->
+                <div class="cal-unified-action">
+                    <button type="button" class="btn-unified-calendar" id="btnUnifiedCalendar"
+                        aria-label="Add selected celebration to calendar">
+                        <svg class="btn-cal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.8" width="18" height="18" aria-hidden="true">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                            <path d="M12 14v4M10 16h4"></path>
+                        </svg>
+                        <span class="btn-cal-title">ADD TO CALENDAR</span>
+                    </button>
+                    <div class="cal-smart-badge">
+                        <span class="smart-badge-text" id="calSmartBadgeText">Works automatically with Apple &amp;
+                            Google Calendar</span>
+                    </div>
+                    <button type="button" class="btn-cal-alt-link" id="btnCalAltLink">Download .ICS file
+                        instead</button>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- ============================================================ -->
+        <!-- SECTION 10: SATURDAY EVENT                                   -->
+        <!-- ============================================================ -->
+        <section class="section section-event-day" id="saturdayEvent">
+            <!-- Four Corner Floral Frame (TL, TR, BL, BR) -->
+            <div class="corner-flower corner-flower-tl" aria-hidden="true">
+                <img src="images/floral/corner-flowers-tl.png" alt="">
+            </div>
+            <div class="corner-flower corner-flower-tr" aria-hidden="true">
+                <img src="images/floral/corner-flowers-tr.png" alt="">
+            </div>
+            <div class="corner-flower corner-flower-bl" aria-hidden="true">
+                <img src="images/floral/corner-flowers-bl.png" alt="">
+            </div>
+            <div class="corner-flower corner-flower-br" aria-hidden="true">
+                <img src="images/floral/corner-flowers-br.png" alt="">
+            </div>
+
+            <div class="section-inner reveal-on-scroll">
+                <div class="event-dedicated-card">
+                    <div class="event-badge-pill">DAY 1 CELEBRATION</div>
+                    <h2 class="event-day-heading">Saturday</h2>
+                    <p class="event-full-date">12 December 2026</p>
+
+                    <div class="event-timings-strip">
+                        <div class="timing-block">
+                            <span class="timing-label">NIKAH</span>
+                            <span class="timing-val">5:00 PM</span>
+                        </div>
+                        <div class="timing-divider" aria-hidden="true"></div>
+                        <div class="timing-block">
+                            <span class="timing-label">WALIMA</span>
+                            <span class="timing-val">After Nikah</span>
+                        </div>
+                    </div>
+
+                    <div class="event-venue-card">
+                        <span class="venue-type-tag">VENUE</span>
+                        <h3 class="venue-name">K-Hills Convention Centre</h3>
+                        <address class="venue-address">
+                            Ramanattukara, Feroke,<br>
+                            Calicut, Kerala
+                        </address>
+                        <a href="https://maps.google.com/?q=K-Hills+Convention+Centre+Ramanattukara+Calicut+Kerala"
+                            target="_blank" rel="noopener noreferrer" class="btn-location-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16"
+                                height="16" aria-hidden="true">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <span>Open in Google Maps</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 11: SUNDAY EVENT                                     -->
+        <!-- Exact house name: Meethalayancheri (H)                          -->
+        <!-- ============================================================ -->
+        <section class="section section-event-day" id="sundayEvent">
+            <!-- Four Corner Floral Frame (TL, TR, BL, BR) -->
+            <div class="corner-flower corner-flower-tl" aria-hidden="true">
+                <img src="images/floral/corner-flowers-tl.png" alt="">
+            </div>
+            <div class="corner-flower corner-flower-tr" aria-hidden="true">
+                <img src="images/floral/corner-flowers-tr.png" alt="">
+            </div>
+            <div class="corner-flower corner-flower-bl" aria-hidden="true">
+                <img src="images/floral/corner-flowers-bl.png" alt="">
+            </div>
+            <div class="corner-flower corner-flower-br" aria-hidden="true">
+                <img src="images/floral/corner-flowers-br.png" alt="">
+            </div>
+
+            <div class="section-inner reveal-on-scroll">
+                <div class="event-dedicated-card">
+                    <div class="event-badge-pill">DAY 2 CELEBRATION</div>
+                    <h2 class="event-day-heading">Sunday</h2>
+                    <p class="event-full-date">13 December 2026</p>
+
+                    <div class="event-timings-strip">
+                        <div class="timing-block">
+                            <span class="timing-label">NIKAH</span>
+                            <span class="timing-val">1:00 PM</span>
+                        </div>
+                        <div class="timing-divider" aria-hidden="true"></div>
+                        <div class="timing-block">
+                            <span class="timing-label">WALIMA</span>
+                            <span class="timing-val">After Nikah</span>
+                        </div>
+                    </div>
+
+                    <div class="event-venue-card">
+                        <span class="venue-type-tag">VENUE</span>
+                        <h3 class="venue-name">At Residence</h3>
+                        <p class="venue-house-name">Meethalayancheri (H)</p>
+                        <address class="venue-address">
+                            Nadakkuthazha,<br>
+                            Puthur, Vadakara,<br>
+                            Calicut
+                        </address>
+                        <a href="https://maps.app.goo.gl/ZeQx2xCRb4yUPErM7?g_st=aw" target="_blank"
+                            rel="noopener noreferrer" class="btn-location-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16"
+                                height="16" aria-hidden="true">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <span>Open in Google Maps</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 12: FAMILY BLESSINGS                                 -->
+        <!-- ============================================================ -->
+        <section class="section section-family" id="familyBlessings">
+            <!-- Four Corner Floral Frame (TL, TR, BL, BR) -->
+            <div class="corner-flower corner-flower-tl" aria-hidden="true">
+                <img src="images/floral/corner-flowers-tl.png" alt="">
+            </div>
+            <div class="corner-flower corner-flower-tr" aria-hidden="true">
+                <img src="images/floral/corner-flowers-tr.png" alt="">
+            </div>
+            <div class="corner-flower corner-flower-bl" aria-hidden="true">
+                <img src="images/floral/corner-flowers-bl.png" alt="">
+            </div>
+            <div class="corner-flower corner-flower-br" aria-hidden="true">
+                <img src="images/floral/corner-flowers-br.png" alt="">
+            </div>
+
+            <div class="section-inner reveal-on-scroll">
+                <p class="section-eyebrow">HONOURING OUR FAMILIES</p>
+                <h2 class="section-heading">FAMILY BLESSINGS</h2>
+                <div class="gold-hairline-ornament" aria-hidden="true">
+                    <span class="hairline-left"></span>
+                    <span class="hairline-diamond">◆</span>
+                    <span class="hairline-right"></span>
+                </div>
+                <p class="family-intro">Together with our esteemed families, we seek your heartfelt prayers &amp;
+                    presence</p>
+
+                <div class="family-members-grid">
+                    <!-- Family Group 1: Groom 1 & Bride 1 -->
+                    <div class="family-card">
+                        <span class="family-card-tag">GROOM &amp; BRIDE</span>
+                        <div class="family-person">
+                            <h3 class="family-person-name">Dr. Favas Hameed</h3>
+                            <p class="family-person-parentage">S/o Dr. C. Hameed &amp; Subaida Hameed</p>
+                        </div>
+                        <div class="family-divider-soft" aria-hidden="true"></div>
+                        <div class="family-person">
+                            <h3 class="family-person-name">Ayesha Amal</h3>
+                            <p class="family-person-parentage">D/o Ibrahim Ponneth &amp; Saleena Mambra</p>
+                        </div>
+                    </div>
+
+                    <!-- Family Group 2: Groom 2 & Bride 2 -->
+                    <div class="family-card">
+                        <span class="family-card-tag">GROOM &amp; BRIDE</span>
+                        <div class="family-person">
+                            <h3 class="family-person-name">Dr. Fanseem Hameed</h3>
+                            <p class="family-person-parentage">S/o Dr. C. Hameed &amp; Subaida Hameed</p>
+                        </div>
+                        <div class="family-divider-soft" aria-hidden="true"></div>
+                        <div class="family-person">
+                            <h3 class="family-person-name">Rafna Noushad</h3>
+                            <p class="family-person-parentage">D/o Noushad K.T. &amp; Jaseena V.P.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 13: COUNTDOWN                                        -->
+        <!-- Live Vanilla JS Countdown to 12 December 2026, 5:00 PM       -->
+        <!-- ============================================================ -->
+        <section class="section section-countdown" id="countdown">
+            <!-- Four Corner Floral Frame (TL, TR, BL, BR) -->
+            <div class="corner-flower corner-flower-tl" aria-hidden="true">
+                <img src="images/floral/corner-flowers-tl.png" alt="">
+            </div>
+            <div class="corner-flower corner-flower-tr" aria-hidden="true">
+                <img src="images/floral/corner-flowers-tr.png" alt="">
+            </div>
+            <div class="corner-flower corner-flower-bl" aria-hidden="true">
+                <img src="images/floral/corner-flowers-bl.png" alt="">
+            </div>
+            <div class="corner-flower corner-flower-br" aria-hidden="true">
+                <img src="images/floral/corner-flowers-br.png" alt="">
+            </div>
+
+            <div class="section-inner reveal-on-scroll">
+                <p class="section-eyebrow">COUNTING DOWN TO THE CELEBRATION</p>
+                <h2 class="section-heading">COUNTDOWN</h2>
+                <div class="gold-hairline-ornament" aria-hidden="true">
+                    <span class="hairline-left"></span>
+                    <span class="hairline-diamond">◆</span>
+                    <span class="hairline-right"></span>
+                </div>
+                <p class="countdown-target-text">Saturday, 12 December 2026 • 5:00 PM</p>
+
+                <div class="countdown-boxes" id="countdownBoxes" aria-live="polite">
+                    <div class="cd-box">
+                        <span class="cd-num" id="cdDays">000</span>
+                        <span class="cd-label">DAYS</span>
+                    </div>
+                    <div class="cd-box">
+                        <span class="cd-num" id="cdHours">00</span>
+                        <span class="cd-label">HOURS</span>
+                    </div>
+                    <div class="cd-box">
+                        <span class="cd-num" id="cdMinutes">00</span>
+                        <span class="cd-label">MINUTES</span>
+                    </div>
+                    <div class="cd-box">
+                        <span class="cd-num" id="cdSeconds">00</span>
+                        <span class="cd-label">SECONDS</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ============================================================ -->
+        <!-- SECTION 15: FINAL / CLOSING                                  -->
+        <!-- ============================================================ -->
+        <section class="section section-closing" id="closing">
+            <!-- Four Corner Floral Frame (TL, TR, BL, BR) -->
+            <div class="corner-flower corner-flower-tl" aria-hidden="true">
+                <img src="images/floral/corner-flowers-tl.png" alt="">
+            </div>
+            <div class="corner-flower corner-flower-tr" aria-hidden="true">
+                <img src="images/floral/corner-flowers-tr.png" alt="">
+            </div>
+            <div class="corner-flower corner-flower-bl" aria-hidden="true">
+                <img src="images/floral/corner-flowers-bl.png" alt="">
+            </div>
+            <div class="corner-flower corner-flower-br" aria-hidden="true">
+                <img src="images/floral/corner-flowers-br.png" alt="">
+            </div>
+
+            <div class="section-inner closing-inner reveal-on-scroll">
+                <p class="closing-arabic" lang="ar" dir="rtl">جَزَاكُمُ ٱللَّهُ خَيْرًا</p>
+                <h2 class="closing-title">WITH LOVE &amp; BLESSINGS</h2>
+                <div class="gold-hairline-ornament" aria-hidden="true">
+                    <span class="hairline-left"></span>
+                    <span class="hairline-diamond">◆</span>
+                    <span class="hairline-right"></span>
+                </div>
+                <p class="closing-message">We look forward to celebrating these beautiful days of love, family, and
+                    togetherness with you.</p>
+                <p class="closing-dates-note">12 &amp; 13 December 2026 • Calicut, Kerala</p>
+
+                <div class="closing-family-signature">
+                    <span>Hameed Family</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- Configuration & Main JavaScript Files -->
+    <script src="js/lenis.min.js"></script>
+    <script src="js/weddingData.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

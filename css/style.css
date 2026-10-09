@@ -1,0 +1,2415 @@
+/* ============================================================
+   LUXURY DIGITAL WEDDING INVITATION STYLESHEET
+   Mobile-First • Traditional Islamic & Romantic Aesthetic
+   ============================================================ */
+
+/* CSS RESET & TOKENS */
+:root {
+    --color-ivory: #F2EFE9;
+    --color-ivory-warm: #FAF8F2;
+    --color-ivory-card: #FAF7F0;
+    --color-burgundy: #651D2C;
+    --color-burgundy-dark: #45121E;
+    --color-burgundy-deep: #320C15;
+    --color-rose-muted: #8D4A57;
+    --color-gold: #B89A68;
+    --color-gold-light: #D4BD8F;
+    --color-gold-subtle: rgba(184, 154, 104, 0.22);
+    --color-text: #342226;
+    --color-text-muted: #543E42;
+    --color-text-subtle: #70585C;
+    
+    --font-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-arabic: 'Amiri', 'Traditional Arabic', serif;
+
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 14px;
+    --radius-pill: 9999px;
+
+    --transition-smooth: 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    --transition-slow: 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ============================================================
+   HIDE SCROLLBAR COMPLETELY (CLEAN LUXURY PRESENTATION)
+   Preserves full scrolling while removing the native scrollbar
+   track, thumb, and arrows across Chrome, Edge, Safari, Firefox.
+   ============================================================ */
+html,
+body,
+* {
+    scrollbar-width: none !important; /* Firefox */
+    -ms-overflow-style: none !important; /* IE 10+ and Edge Legacy */
+}
+
+/* Chrome, Edge, Safari, Opera (WebKit & Chromium) */
+::-webkit-scrollbar,
+*::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    background: transparent !important;
+}
+
+/* Lenis Smooth Scroll Engine Support Styles */
+html.lenis,
+html.lenis body {
+    height: auto;
+}
+
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+    pointer-events: none;
+}
+
+/* Strict Scroll Lock while Opening Screen is Active (prevents any inner page scroll) */
+html.is-locked,
+body.is-locked {
+    overflow: hidden !important;
+    height: 100% !important;
+    max-height: 100vh !important;
+    touch-action: none !important;
+    overscroll-behavior: none !important;
+}
+
+html {
+    /* Never set scroll-behavior: smooth when Lenis is running */
+    scroll-behavior: auto !important;
+    -webkit-text-size-adjust: 100%;
+    background-color: var(--color-ivory-warm);
+    background-image: url('../images/floral/paper-texture.png');
+    background-repeat: repeat;
+    background-size: 216px 135px;
+}
+
+html.no-lenis {
+    scroll-behavior: smooth !important;
+}
+
+body {
+    font-family: var(--font-sans);
+    color: var(--color-text);
+    background-color: var(--color-ivory-warm);
+    background-image: url('../images/floral/paper-texture.png');
+    background-repeat: repeat;
+    background-size: 216px 135px;
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* ============================================================
+   FALLING ROSE PETALS OVERLAY (NON-BLOCKING)
+   ============================================================ */
+.petal-layer {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 50;
+    contain: strict;
+}
+
+.rose-petal-item {
+    position: absolute;
+    top: -60px;
+    pointer-events: none;
+    user-select: none;
+    will-change: transform, opacity;
+    animation: petalFall linear infinite;
+}
+
+.rose-petal-item img {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 4px 6px rgba(69, 18, 30, 0.15));
+}
+
+@keyframes petalFall {
+    0% {
+        transform: translate3d(0, -60px, 0) rotate(0deg) rotateY(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.85;
+    }
+    85% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translate3d(var(--drift-x, 40px), calc(100vh + 80px), 0) rotate(var(--rot-end, 360deg)) rotateY(var(--rot-y, 180deg));
+        opacity: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .petal-layer {
+        display: none !important;
+    }
+}
+
+/* ============================================================
+   FIXED FLOATING MUSIC CONTROLLER
+   ============================================================ */
+.music-fab {
+    position: fixed;
+    top: max(14px, env(safe-area-inset-top, 14px));
+    bottom: auto;
+    right: 16px;
+    z-index: 85;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: rgba(251, 248, 241, 0.94);
+    border: 1px solid var(--color-gold);
+    border-radius: 50%;
+    padding: 0;
+    box-shadow: 0 4px 18px rgba(69, 18, 30, 0.14);
+    backdrop-filter: blur(8px);
+    transition: transform var(--transition-smooth), opacity var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.music-fab:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 22px rgba(69, 18, 30, 0.2);
+}
+
+.music-fab button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--color-burgundy);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    touch-action: manipulation;
+}
+
+.fab-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--color-burgundy) !important;
+    color: var(--color-ivory-warm) !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.fab-btn:hover, .fab-btn:focus-visible {
+    transform: scale(1.06);
+    background: var(--color-burgundy-dark) !important;
+}
+
+.fab-icon-playing {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 14px;
+}
+
+.fab-icon-playing .bar {
+    width: 2.5px;
+    background: var(--color-ivory-warm);
+    border-radius: 1px;
+    animation: barBounce 1.2s ease-in-out infinite alternate;
+}
+.fab-icon-playing .bar-1 { height: 6px; animation-delay: 0.1s; }
+.fab-icon-playing .bar-2 { height: 13px; animation-delay: 0.3s; }
+.fab-icon-playing .bar-3 { height: 9px; animation-delay: 0.2s; }
+.fab-icon-playing .bar-4 { height: 12px; animation-delay: 0.4s; }
+
+@keyframes barBounce {
+    0% { height: 4px; }
+    100% { height: 14px; }
+}
+
+.fab-icon-paused {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding-left: 2px;
+}
+
+.music-paused .fab-icon-playing {
+    display: none;
+}
+.music-paused .fab-icon-paused {
+    display: flex;
+}
+
+/* ============================================================
+   FIXED DISCREET MOBILE NAVIGATION
+   Strictly one line: ITINERARY | CALENDAR | MUSIC | ENVELOPE
+   ============================================================ */
+.fixed-nav {
+    position: fixed;
+    bottom: max(14px, env(safe-area-inset-bottom, 14px));
+    top: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    max-width: calc(100% - 24px);
+    z-index: 80;
+    background: rgba(251, 248, 241, 0.95);
+    border: 1px solid var(--color-gold);
+    border-radius: var(--radius-pill);
+    box-shadow: 0 4px 20px rgba(69, 18, 30, 0.14);
+    backdrop-filter: blur(10px);
+    transition: opacity var(--transition-smooth), transform var(--transition-smooth);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    padding: 8px 24px;
+    white-space: nowrap;
+}
+
+.nav-item {
+    font-family: var(--font-sans);
+    font-size: clamp(0.68rem, 2.7vw, 0.8rem);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--color-burgundy);
+    text-decoration: none;
+    padding: 6px 4px;
+    transition: color 0.2s ease, opacity 0.2s ease;
+    flex-shrink: 0;
+}
+
+.nav-item:hover, .nav-item:focus-visible, .nav-item.active {
+    color: var(--color-gold);
+}
+
+.nav-dot {
+    color: var(--color-gold);
+    font-size: 0.65rem;
+    opacity: 0.6;
+    user-select: none;
+}
+
+/* ============================================================
+   SECTION 1: OPENING SCREEN
+   ============================================================ */
+.opening-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background-color: var(--color-ivory-warm);
+    background-image: url('../images/floral/paper-texture.png');
+    background-repeat: repeat;
+    background-size: 216px 135px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    overflow: hidden;
+    touch-action: none;
+    overscroll-behavior: none;
+    user-select: none;
+    cursor: default;
+    transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.opening-screen.opening-dismissed {
+    opacity: 0;
+    transform: scale(1.04);
+    pointer-events: none;
+}
+
+/* Floral Overlay Placements (Pure Overlays) */
+.floral-decoration {
+    position: absolute;
+    pointer-events: none;
+    user-select: none;
+    z-index: 2;
+}
+
+.floral-img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Opening Screen Florals */
+.opening-floral-top {
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+}
+.opening-floral-top .floral-img-top {
+    width: 100%;
+    max-height: clamp(140px, 24vh, 220px);
+    object-fit: cover;
+    object-position: top center;
+}
+
+.opening-floral-bottom {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+}
+.opening-floral-bottom .floral-img-bottom {
+    width: 100%;
+    max-height: clamp(140px, 24vh, 220px);
+    object-fit: cover;
+    object-position: bottom center;
+}
+
+.opening-floral-left {
+    top: 35%;
+    left: 0;
+    width: clamp(70px, 18vw, 130px);
+}
+.opening-floral-right {
+    top: 40%;
+    right: 0;
+    width: clamp(70px, 18vw, 130px);
+}
+
+.opening-card {
+    position: relative;
+    z-index: 10;
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+    padding: clamp(24px, 6vh, 40px) 16px;
+    margin: 0 auto;
+}
+
+.opening-monogram {
+    display: inline-block;
+    padding: 4px 14px;
+    border: 1px solid var(--color-gold);
+    border-radius: var(--radius-pill);
+    margin-bottom: 12px;
+}
+.monogram-text {
+    font-family: var(--font-serif);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    color: var(--color-gold);
+}
+
+.opening-arabic {
+    font-family: var(--font-arabic);
+    font-size: clamp(1.25rem, 4.2vw, 1.45rem);
+    color: var(--color-burgundy-dark);
+    margin-bottom: 8px;
+    line-height: 1.5;
+    font-weight: 700;
+}
+
+.opening-eyebrow {
+    font-family: var(--font-sans);
+    font-size: clamp(0.72rem, 2.5vw, 0.78rem);
+    letter-spacing: 0.22em;
+    font-weight: 700;
+    color: var(--color-burgundy);
+    margin-bottom: 12px;
+}
+
+.opening-title {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    color: var(--color-burgundy);
+    margin-bottom: 14px;
+    line-height: 1.25;
+}
+
+.opening-couple-name {
+    display: block;
+    font-size: clamp(1.45rem, 5.5vw, 1.85rem);
+    letter-spacing: 0.02em;
+}
+
+.opening-ampersand {
+    display: block;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.3rem;
+    color: var(--color-gold);
+    margin: 2px 0;
+}
+
+.opening-date {
+    font-family: var(--font-serif);
+    font-size: clamp(1rem, 3.6vw, 1.2rem);
+    letter-spacing: 0.16em;
+    font-weight: 600;
+    color: var(--color-burgundy);
+    margin-top: 10px;
+}
+
+.opening-location {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    letter-spacing: 0.22em;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 22px;
+}
+
+.opening-cta-wrap {
+    margin-top: 10px;
+}
+
+.btn-tap-open {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: var(--color-burgundy);
+    color: var(--color-ivory-warm);
+    border: 1.5px solid var(--color-gold);
+    border-radius: var(--radius-pill);
+    padding: 12px 28px;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(101, 29, 44, 0.22);
+    transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+    touch-action: manipulation;
+}
+
+.btn-tap-open:hover, .btn-tap-open:focus-visible {
+    transform: translateY(-2px);
+    background: var(--color-burgundy-dark);
+    box-shadow: 0 6px 20px rgba(101, 29, 44, 0.3);
+}
+
+.btn-wax-seal {
+    display: inline-flex;
+    color: var(--color-gold);
+}
+
+.tap-hint {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    color: var(--color-text-subtle);
+    margin-top: 10px;
+}
+
+/* ============================================================
+   MAIN INVITATION CARD CONTAINER
+   ============================================================ */
+.invitation-container {
+    width: 100%;
+    max-width: 580px;
+    margin: 0 auto;
+    position: relative;
+    background-color: var(--color-ivory-warm);
+    background-image: url('../images/floral/paper-texture.png');
+    background-repeat: repeat;
+    background-size: 216px 135px;
+    box-shadow: 0 0 35px rgba(69, 18, 30, 0.08);
+    border-left: 1px solid rgba(184, 154, 104, 0.18);
+    border-right: 1px solid rgba(184, 154, 104, 0.18);
+}
+
+/* Reusable Section Styles: Each Section is a Full 100vh Page */
+.section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: clamp(32px, 5vh, 48px) clamp(18px, 4.5vw, 32px);
+    overflow-x: hidden;
+    overflow-y: visible;
+    box-sizing: border-box;
+}
+
+/* Eliminate subpixel gaps and white lines between adjacent full-height sections */
+.section + .section {
+    margin-top: -2px;
+}
+
+/* ============================================================
+   CORNER FLOWERS (FOUR CORNERS LUXURY FRAME)
+   Flowers in all four corners (TL, TR, BL, BR) of every content page
+   ============================================================ */
+.corner-flower {
+    position: absolute;
+    pointer-events: none;
+    user-select: none;
+    z-index: 2;
+}
+
+.corner-flower img {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 3px 10px rgba(69, 18, 30, 0.14));
+}
+
+.corner-flower-tl,
+.corner-flower-tr,
+.corner-flower-bl,
+.corner-flower-br {
+    width: clamp(210px, 48vw, 290px);
+}
+
+.corner-flower-tl {
+    top: -3px;
+    left: -1px;
+}
+
+.corner-flower-tr {
+    top: -3px;
+    right: -1px;
+}
+
+.corner-flower-bl {
+    bottom: -3px;
+    left: -1px;
+}
+
+.corner-flower-br {
+    bottom: -3px;
+    right: -1px;
+}
+
+.section-inner {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Subtle Scroll Reveal */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+}
+.reveal-on-scroll.revealed {
+    opacity: 1;
+    transform: translateY(0);
+    will-change: auto;
+}
+
+/* Reusable Hairline Ornaments */
+.gold-hairline-ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    max-width: 180px;
+    margin: 12px auto 20px;
+    color: var(--color-gold);
+}
+.hairline-left, .hairline-right {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-gold));
+}
+.hairline-right {
+    background: linear-gradient(90deg, var(--color-gold), transparent);
+}
+.hairline-diamond {
+    font-size: 0.6rem;
+    color: var(--color-gold);
+}
+
+.section-eyebrow {
+    font-family: var(--font-sans);
+    font-size: clamp(0.72rem, 2.5vw, 0.78rem);
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--color-burgundy);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+}
+
+.section-heading {
+    font-family: var(--font-serif);
+    font-size: clamp(1.5rem, 5vw, 1.95rem);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--color-burgundy);
+    margin-bottom: 2px;
+}
+
+/* ============================================================
+   SECTION 2: COUPLE HERO
+   ============================================================ */
+.section-hero {
+    padding-top: clamp(36px, 5vh, 52px);
+    padding-bottom: clamp(36px, 5vh, 52px);
+}
+
+.arabic-bismillah {
+    font-family: var(--font-arabic);
+    font-size: clamp(1.2rem, 3.8vw, 1.5rem);
+    color: var(--color-burgundy-dark);
+    margin-bottom: 4px;
+    line-height: 1.4;
+}
+
+.invitation-lead {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 600;
+    font-size: clamp(1.02rem, 3.4vw, 1.15rem);
+    color: var(--color-burgundy-dark);
+    max-width: 440px;
+    margin: 8px auto 14px;
+    line-height: 1.55;
+    letter-spacing: 0.01em;
+}
+
+.couple-card {
+    background: rgba(254, 252, 248, 0.94);
+    border: 1px solid rgba(184, 154, 104, 0.38);
+    border-radius: var(--radius-md);
+    padding: clamp(12px, 1.8vh, 18px) 14px;
+    margin-bottom: 8px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    box-shadow: 0 4px 16px rgba(69, 18, 30, 0.05);
+}
+
+.couple-name {
+    font-family: var(--font-serif);
+    font-size: clamp(1.3rem, 4.2vw, 1.6rem);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--color-burgundy);
+    line-height: 1.25;
+}
+
+.couple-parentage {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-top: 3px;
+    line-height: 1.35;
+}
+
+.couple-connector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 6px auto;
+    max-width: 120px;
+}
+.connector-line {
+    flex: 1;
+    height: 1px;
+    background: var(--color-gold);
+    opacity: 0.4;
+}
+.connector-text {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--color-gold);
+    font-size: 1.05rem;
+}
+
+.gold-filigree-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin: 10px auto;
+    max-width: 160px;
+    color: var(--color-gold);
+}
+.filigree-line {
+    flex: 1;
+    height: 1px;
+    background: var(--color-gold);
+    opacity: 0.4;
+}
+.filigree-knot {
+    font-size: 0.85rem;
+}
+
+/* ============================================================
+   SECTION 3: QURAN VERSE
+   ============================================================ */
+.section-quran {
+    padding: clamp(32px, 5vh, 48px) clamp(18px, 4.5vw, 32px);
+}
+
+.quran-inner {
+    max-width: 440px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.quran-arch-frame {
+    background: rgba(254, 252, 248, 0.95);
+    border: 1.2px solid var(--color-gold);
+    border-radius: 40px 40px var(--radius-md) var(--radius-md);
+    padding: clamp(26px, 5vh, 40px) clamp(16px, 4vw, 26px);
+    box-shadow: 0 6px 20px rgba(69, 18, 30, 0.06), inset 0 0 16px rgba(184, 154, 104, 0.08);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.quran-emblem {
+    font-size: 1.4rem;
+    color: var(--color-gold);
+    margin-bottom: 8px;
+}
+
+.quran-quote {
+    quotes: none;
+}
+
+.quran-arabic {
+    font-family: var(--font-arabic);
+    font-size: clamp(1.45rem, 5.5vw, 1.95rem);
+    font-weight: 700;
+    color: var(--color-burgundy-dark);
+    margin-bottom: 12px;
+    line-height: 1.65;
+    direction: rtl;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+}
+
+.quran-english {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(1.05rem, 3.6vw, 1.25rem);
+    color: var(--color-text);
+    margin-bottom: 12px;
+    line-height: 1.45;
+}
+
+.quran-reference {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-style: normal;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--color-burgundy);
+    text-transform: uppercase;
+}
+
+
+/* ============================================================
+   SECTION 6: ITINERARY
+   ============================================================ */
+.section-itinerary {
+    padding: clamp(32px, 5vh, 48px) clamp(18px, 4.5vw, 32px);
+}
+
+.itinerary-grid {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(10px, 1.8vh, 14px);
+    max-width: 440px;
+    margin: 8px auto 0;
+    text-align: left;
+}
+
+.itinerary-card {
+    background: rgba(254, 252, 248, 0.95);
+    border: 1px solid rgba(184, 154, 104, 0.38);
+    border-radius: var(--radius-md);
+    padding: clamp(12px, 1.8vh, 16px) 14px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    box-shadow: 0 4px 16px rgba(69, 18, 30, 0.05);
+}
+
+.itinerary-card-header {
+    margin-bottom: 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(184, 154, 104, 0.2);
+}
+
+.itinerary-day-tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--color-burgundy);
+    margin-bottom: 2px;
+}
+
+.itinerary-date {
+    font-family: var(--font-serif);
+    font-size: clamp(1.15rem, 3.8vw, 1.3rem);
+    font-weight: 600;
+    color: var(--color-burgundy);
+}
+
+.itinerary-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.itinerary-entry {
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+}
+
+.itinerary-time {
+    min-width: 76px;
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--color-burgundy-dark);
+    letter-spacing: 0.04em;
+}
+
+.itinerary-detail strong {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text);
+}
+.itinerary-detail span {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+}
+
+.itinerary-venue-note {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-text);
+    padding-top: 6px;
+    border-top: 1px dashed rgba(184, 154, 104, 0.25);
+}
+.itinerary-venue-note svg {
+    color: var(--color-burgundy);
+    flex-shrink: 0;
+}
+
+/* ============================================================
+   SECTION 7: CALENDAR (INTERACTIVE SELECT & ADD TO CALENDAR)
+   Matching bespoke luxury stationery design
+   ============================================================ */
+.section-calendar {
+    padding: clamp(32px, 5vh, 48px) clamp(18px, 4.5vw, 32px);
+}
+
+.cal-interactive-inner {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 420px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.cal-select-eyebrow {
+    font-size: clamp(0.72rem, 2.5vw, 0.78rem);
+    letter-spacing: 0.22em;
+    font-weight: 700;
+    color: var(--color-burgundy);
+    margin-bottom: 4px;
+    text-transform: uppercase;
+}
+
+.cal-select-heading {
+    font-family: var(--font-serif);
+    font-size: clamp(2.1rem, 7vw, 2.8rem);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--color-burgundy);
+    line-height: 1.12;
+    letter-spacing: 0.01em;
+    margin: 2px 0 4px 0;
+}
+
+.cal-select-date {
+    font-family: var(--font-serif);
+    font-size: clamp(1.1rem, 3.6vw, 1.3rem);
+    font-style: italic;
+    font-weight: 600;
+    color: var(--color-burgundy);
+    margin: 0 0 8px 0;
+}
+
+.cal-sprig-ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2px auto 10px auto;
+}
+
+.cal-sprig-ornament svg {
+    display: block;
+    filter: drop-shadow(0 1px 2px rgba(197, 160, 89, 0.2));
+}
+
+/* Range Selector Pills */
+.cal-selector-pills {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    width: 100%;
+    max-width: 320px;
+    margin: 6px auto 4px auto;
+}
+
+.cal-pill-btn {
+    width: 100%;
+    padding: 10px 16px;
+    border-radius: var(--radius-pill);
+    background: rgba(254, 252, 248, 0.88);
+    border: 1.2px solid rgba(197, 160, 89, 0.45);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    font-size: clamp(0.72rem, 2.5vw, 0.78rem);
+    font-weight: 700;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(69, 18, 30, 0.04);
+    transition: all 0.22s cubic-bezier(0.25, 1, 0.5, 1);
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.cal-pill-btn:hover {
+    border-color: var(--color-gold);
+    background: rgba(254, 252, 248, 0.98);
+    transform: translateY(-1px);
+}
+
+.cal-pill-btn.active {
+    background: #251e20;
+    border: 1.6px solid var(--color-gold);
+    color: #fbf8f1;
+    box-shadow: 0 6px 16px rgba(35, 20, 25, 0.24);
+    transform: translateY(-1px);
+}
+
+.cal-pill-btn:focus-visible {
+    box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.4);
+}
+
+/* Dynamic Description */
+.cal-selection-desc {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 600;
+    font-size: clamp(0.96rem, 3.2vw, 1.08rem);
+    color: var(--color-burgundy-dark);
+    line-height: 1.5;
+    text-align: center;
+    max-width: 340px;
+    margin: 8px auto 12px auto;
+    min-height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0.01em;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* Single Universal Button Container */
+.cal-unified-action {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+.btn-unified-calendar {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 20px;
+    border-radius: var(--radius-pill);
+    background: #f4ece1;
+    border: 1.5px solid var(--color-gold);
+    color: var(--color-burgundy);
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(69, 18, 30, 0.08);
+    transition: all 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.btn-unified-calendar:hover {
+    background: #ece1d1;
+    border-color: var(--color-burgundy);
+    box-shadow: 0 8px 24px rgba(69, 18, 30, 0.14);
+    transform: translateY(-2px);
+}
+
+.btn-unified-calendar:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(69, 18, 30, 0.1);
+}
+
+.btn-cal-icon {
+    flex-shrink: 0;
+    color: currentColor;
+}
+
+.cal-smart-badge {
+    font-family: var(--font-sans);
+    font-size: 0.76rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    letter-spacing: 0.04em;
+    text-align: center;
+    margin-top: 3px;
+}
+
+.btn-cal-alt-link {
+    background: none;
+    border: none;
+    color: var(--color-burgundy);
+    font-family: var(--font-sans);
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+    margin-top: 4px;
+    padding: 4px 8px;
+    transition: color 0.2s ease;
+}
+
+.btn-cal-alt-link:hover {
+    color: var(--color-burgundy);
+}
+
+/* ============================================================
+   SECTION 8: MUSIC
+   ============================================================ */
+.section-music {
+    padding-top: 24px;
+    padding-bottom: 36px;
+}
+
+.music-card {
+    background: rgba(251, 248, 241, 0.9);
+    border: 1px solid var(--color-gold);
+    border-radius: var(--radius-md);
+    padding: 24px 18px;
+    max-width: 420px;
+    margin: 10px auto 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nasheed-vinyl {
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #320C15 0%, #1a050a 60%, #45121E 100%);
+    border: 3px solid var(--color-gold);
+    box-shadow: 0 4px 14px rgba(69, 18, 30, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+    animation: vinylSpin 14s linear infinite;
+    animation-play-state: paused;
+}
+.music-playing .nasheed-vinyl {
+    animation-play-state: running;
+}
+
+@keyframes vinylSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.vinyl-center {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--color-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.vinyl-monogram {
+    font-family: var(--font-serif);
+    font-size: 0.55rem;
+    font-weight: 700;
+    color: var(--color-burgundy-dark);
+}
+
+.music-track-title {
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--color-burgundy);
+}
+
+.music-track-genre {
+    font-size: 0.74rem;
+    color: var(--color-text-muted);
+    margin-bottom: 12px;
+}
+
+.equalizer-display {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 4px;
+    height: 22px;
+    margin-bottom: 16px;
+}
+.eq-bar {
+    width: 3.5px;
+    height: 4px;
+    background: var(--color-burgundy);
+    border-radius: 2px;
+    transition: height 0.2s ease;
+}
+.music-playing .equalizer-display .eq-bar {
+    animation: eqWave 1s ease-in-out infinite alternate;
+}
+.music-playing .equalizer-display .eq-bar:nth-child(1) { animation-delay: 0.1s; }
+.music-playing .equalizer-display .eq-bar:nth-child(2) { animation-delay: 0.3s; }
+.music-playing .equalizer-display .eq-bar:nth-child(3) { animation-delay: 0.2s; }
+.music-playing .equalizer-display .eq-bar:nth-child(4) { animation-delay: 0.5s; }
+.music-playing .equalizer-display .eq-bar:nth-child(5) { animation-delay: 0.15s; }
+.music-playing .equalizer-display .eq-bar:nth-child(6) { animation-delay: 0.4s; }
+.music-playing .equalizer-display .eq-bar:nth-child(7) { animation-delay: 0.25s; }
+
+@keyframes eqWave {
+    0% { height: 4px; }
+    50% { height: 18px; }
+    100% { height: 7px; }
+}
+
+.music-card-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.btn-music-toggle, .btn-music-mute {
+    padding: 8px 18px;
+    border-radius: var(--radius-pill);
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    touch-action: manipulation;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-music-toggle {
+    background: var(--color-burgundy);
+    color: var(--color-ivory-warm);
+    border: 1px solid var(--color-burgundy);
+}
+.btn-music-toggle:hover {
+    background: var(--color-burgundy-dark);
+}
+
+.btn-music-mute {
+    background: transparent;
+    color: var(--color-burgundy);
+    border: 1px solid var(--color-gold);
+}
+.btn-music-mute:hover {
+    background: var(--color-gold-subtle);
+}
+
+.music-volume-note {
+    font-size: 0.7rem;
+    color: var(--color-text-subtle);
+}
+
+/* ============================================================
+   SECTION 9: ENVELOPE (LUXURY STATIONERY PRESENTATION)
+   ============================================================ */
+.section-envelope {
+    padding-top: 24px;
+    padding-bottom: 36px;
+}
+
+.floral-envelope-right {
+    top: 20%;
+    right: -15px;
+    width: clamp(50px, 12vw, 85px);
+    opacity: 0.65;
+}
+
+.envelope-presentation {
+    max-width: 440px;
+    margin: 10px auto 0;
+}
+
+.envelope-wrapper {
+    position: relative;
+    background: #FFFDFC;
+    border: 1px solid var(--color-gold);
+    border-radius: var(--radius-md);
+    box-shadow: 0 6px 22px rgba(69, 18, 30, 0.08);
+    overflow: hidden;
+    padding: 30px 20px 24px;
+}
+
+.wax-seal-badge {
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #7D2336, #45121E);
+    border: 2px solid var(--color-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(69, 18, 30, 0.25);
+    z-index: 10;
+}
+.wax-seal-inner {
+    font-family: var(--font-serif);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--color-gold-light);
+}
+
+.stationery-letter {
+    text-align: center;
+    padding-top: 18px;
+}
+
+.letter-bismillah {
+    font-family: var(--font-arabic);
+    font-size: 1.15rem;
+    color: var(--color-burgundy);
+    margin-bottom: 8px;
+}
+
+.letter-invitation-lead {
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--color-burgundy-dark);
+    margin-bottom: 10px;
+}
+
+.letter-body {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 0.92rem;
+    color: var(--color-text);
+    line-height: 1.5;
+    margin-bottom: 16px;
+}
+
+.letter-couples {
+    background: rgba(245, 240, 231, 0.5);
+    border-top: 1px solid rgba(184, 154, 104, 0.3);
+    border-bottom: 1px solid rgba(184, 154, 104, 0.3);
+    padding: 10px 0;
+    margin-bottom: 14px;
+}
+
+.letter-couple-item {
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    color: var(--color-burgundy);
+}
+
+.letter-amp {
+    display: block;
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--color-gold);
+    font-size: 0.9rem;
+    margin: 2px 0;
+}
+
+.letter-date-footer {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--color-gold);
+}
+
+/* ============================================================
+   SECTIONS 10 & 11: DEDICATED SATURDAY & SUNDAY EVENTS
+   ============================================================ */
+.section-event-day {
+    padding: clamp(32px, 5vh, 48px) clamp(18px, 4.5vw, 32px);
+}
+
+.event-dedicated-card {
+    background: rgba(254, 252, 248, 0.95);
+    border: 1px solid var(--color-gold);
+    border-radius: var(--radius-md);
+    padding: clamp(18px, 2.5vh, 24px) clamp(14px, 3.5vw, 18px);
+    max-width: 440px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    box-shadow: 0 6px 22px rgba(69, 18, 30, 0.06);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.event-badge-pill {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--color-burgundy);
+    border: 1.2px solid var(--color-gold);
+    border-radius: var(--radius-pill);
+    padding: 3px 12px;
+    margin-bottom: 6px;
+    background: rgba(184, 154, 104, 0.12);
+}
+
+.event-day-heading {
+    font-family: var(--font-serif);
+    font-size: clamp(1.8rem, 5.8vw, 2.25rem);
+    font-weight: 600;
+    color: var(--color-burgundy);
+    line-height: 1.15;
+}
+
+.event-full-date {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-burgundy);
+    margin-bottom: 12px;
+}
+
+.event-timings-strip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(184, 154, 104, 0.35);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    margin-bottom: 14px;
+    box-shadow: 0 2px 8px rgba(69, 18, 30, 0.03);
+}
+
+.timing-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.timing-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--color-burgundy);
+}
+
+.timing-val {
+    font-family: var(--font-serif);
+    font-size: 1.18rem;
+    font-weight: 700;
+    color: var(--color-burgundy-dark);
+}
+
+.timing-divider {
+    width: 1px;
+    height: 28px;
+    background: var(--color-gold);
+    opacity: 0.45;
+}
+
+.event-venue-card {
+    text-align: center;
+    padding-top: 8px;
+    border-top: 1px dashed rgba(184, 154, 104, 0.3);
+}
+
+.venue-type-tag {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--color-burgundy);
+}
+
+.venue-name {
+    font-family: var(--font-serif);
+    font-size: clamp(1.25rem, 4.2vw, 1.45rem);
+    font-weight: 600;
+    color: var(--color-burgundy);
+    margin: 4px 0 2px;
+}
+
+.venue-house-name {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-burgundy-dark);
+    margin-bottom: 3px;
+}
+
+.venue-address {
+    font-style: normal;
+    font-family: var(--font-sans);
+    font-size: clamp(0.82rem, 2.8vw, 0.9rem);
+    color: var(--color-text);
+    font-weight: 500;
+    line-height: 1.45;
+    margin-bottom: 12px;
+}
+
+.btn-location-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--color-burgundy);
+    color: var(--color-ivory-warm);
+    border: 1px solid var(--color-gold);
+    border-radius: var(--radius-pill);
+    padding: 8px 18px;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(69, 18, 30, 0.15);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-location-link:hover, .btn-location-link:focus-visible {
+    background: var(--color-burgundy-dark);
+    transform: translateY(-1px);
+}
+
+/* ============================================================
+   SECTION 12: FAMILY BLESSINGS
+   ============================================================ */
+.section-family {
+    padding: clamp(32px, 5vh, 48px) clamp(18px, 4.5vw, 32px);
+}
+
+.family-intro {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 600;
+    font-size: clamp(1.02rem, 3.4vw, 1.15rem);
+    color: var(--color-burgundy-dark);
+    max-width: 440px;
+    margin: 0 auto 12px;
+    line-height: 1.55;
+    letter-spacing: 0.01em;
+}
+
+.family-members-grid {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(8px, 1.5vh, 12px);
+    max-width: 440px;
+    margin: 0 auto;
+}
+
+.family-card {
+    background: rgba(254, 252, 248, 0.94);
+    border: 1px solid rgba(184, 154, 104, 0.4);
+    border-radius: var(--radius-md);
+    padding: clamp(12px, 1.8vh, 16px) 14px;
+    text-align: center;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    box-shadow: 0 4px 16px rgba(69, 18, 30, 0.05);
+}
+
+.family-card-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--color-burgundy);
+    margin-bottom: 6px;
+}
+
+.family-person {
+    margin: 3px 0;
+}
+
+.family-person-name {
+    font-family: var(--font-serif);
+    font-size: clamp(1.2rem, 3.8vw, 1.35rem);
+    font-weight: 600;
+    color: var(--color-burgundy);
+}
+
+.family-person-parentage {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-top: 2px;
+    line-height: 1.35;
+}
+
+.family-divider-soft {
+    width: 36px;
+    height: 1px;
+    background: var(--color-gold);
+    opacity: 0.45;
+    margin: 6px auto;
+}
+
+/* ============================================================
+   SECTION 13: COUNTDOWN
+   ============================================================ */
+.section-countdown {
+    padding: clamp(32px, 5vh, 48px) clamp(18px, 4.5vw, 32px);
+}
+
+.countdown-target-text {
+    font-family: var(--font-serif);
+    font-size: clamp(1rem, 3.4vw, 1.15rem);
+    font-weight: 600;
+    color: var(--color-burgundy);
+    margin-bottom: 18px;
+}
+
+.countdown-boxes {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.cd-box {
+    background: rgba(254, 252, 248, 0.95);
+    border: 1.2px solid var(--color-gold);
+    border-radius: var(--radius-md);
+    padding: 12px 4px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(69, 18, 30, 0.06);
+}
+
+.cd-num {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: clamp(1.5rem, 5.2vw, 2rem);
+    font-weight: 700;
+    color: var(--color-burgundy);
+    line-height: 1;
+}
+
+.cd-label {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--color-burgundy);
+    margin-top: 6px;
+}
+
+
+
+/* ============================================================
+   SECTION 15: FINAL / CLOSING
+   ============================================================ */
+.section-closing {
+    padding: clamp(32px, 5vh, 48px) clamp(18px, 4.5vw, 32px);
+}
+
+.closing-inner {
+    max-width: 440px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.closing-arabic {
+    font-family: var(--font-arabic);
+    font-size: 1.35rem;
+    color: var(--color-burgundy-dark);
+    margin-bottom: 4px;
+}
+
+.closing-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.5rem, 5vw, 1.85rem);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--color-burgundy);
+}
+
+.closing-message {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 600;
+    font-size: clamp(1.05rem, 3.6vw, 1.2rem);
+    color: var(--color-burgundy-dark);
+    line-height: 1.55;
+    margin: 10px auto;
+    letter-spacing: 0.01em;
+}
+
+.closing-dates-note {
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--color-burgundy);
+    margin-bottom: 12px;
+}
+
+.closing-family-signature {
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--color-burgundy);
+    letter-spacing: 0.05em;
+    margin-bottom: 14px;
+}
+
+/* ============================================================
+   RESPONSIVE DESIGN BREAKPOINTS & MOBILE CLARITY TUNING
+   320px - 480px (Mobile Phones)
+   768px (Tablet)
+   1024px+ / 1440px (Desktop Centered Stationery)
+   ============================================================ */
+@media (max-width: 480px) {
+    /* Section Sizing, Alignment & Safe Areas */
+    .section {
+        padding: clamp(20px, 4vh, 36px) 14px;
+        overflow-x: hidden;
+        overflow-y: visible;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .section-inner {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 4px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Corner Flowers: Scaled Elegantly on Mobile to Frame Without Obscuring */
+    .corner-flower-tl,
+    .corner-flower-tr,
+    .corner-flower-bl,
+    .corner-flower-br {
+        width: clamp(165px, 46vw, 235px);
+    }
+
+    /* SECTION 1: OPENING SCREEN MOBILE CLARITY */
+    .opening-screen {
+        padding: 12px;
+    }
+
+    .opening-card {
+        padding: clamp(18px, 4vh, 30px) 10px;
+        max-width: 360px;
+        width: 100%;
+    }
+
+    .opening-monogram {
+        padding: 3px 12px;
+        margin-bottom: 10px;
+    }
+
+    .monogram-text {
+        font-size: 0.78rem;
+        letter-spacing: 0.18em;
+    }
+
+    .opening-arabic {
+        font-size: clamp(1.25rem, 4.4vw, 1.45rem);
+        line-height: 1.5;
+        font-weight: 700;
+        margin-bottom: 6px;
+    }
+
+    .opening-eyebrow {
+        font-size: 0.72rem;
+        letter-spacing: 0.22em;
+        font-weight: 700;
+        color: var(--color-burgundy);
+        margin-bottom: 10px;
+    }
+
+    .opening-title {
+        margin-bottom: 10px;
+    }
+
+    .opening-couple-name {
+        font-size: clamp(1.45rem, 5.2vw, 1.8rem);
+        line-height: 1.22;
+    }
+
+    .opening-ampersand {
+        font-size: 1.25rem;
+        margin: 2px 0;
+    }
+
+    .opening-date {
+        font-size: clamp(0.98rem, 3.5vw, 1.15rem);
+        letter-spacing: 0.16em;
+        font-weight: 600;
+        margin-top: 8px;
+    }
+
+    .opening-location {
+        font-size: 0.76rem;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        color: var(--color-text);
+        margin-bottom: 16px;
+    }
+
+    .btn-tap-open {
+        padding: 12px 24px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+    }
+
+    .tap-hint {
+        font-size: 0.74rem;
+        font-weight: 500;
+        color: var(--color-text-muted);
+        margin-top: 8px;
+    }
+
+    /* SECTION 2: HERO COUPLE */
+    .arabic-bismillah {
+        font-size: clamp(1.35rem, 4.5vw, 1.65rem);
+        line-height: 1.5;
+        font-weight: 700;
+    }
+
+    .section-eyebrow {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        color: var(--color-burgundy);
+    }
+
+    .section-heading {
+        font-size: clamp(1.5rem, 5vw, 1.85rem);
+    }
+
+    .invitation-lead {
+        font-size: clamp(0.98rem, 3.4vw, 1.08rem);
+        line-height: 1.55;
+        font-weight: 600;
+        color: var(--color-burgundy-dark);
+        margin: 6px auto 10px;
+        max-width: 360px;
+    }
+
+    .couple-card {
+        padding: 12px 10px;
+        margin-bottom: 6px;
+        width: 100%;
+        max-width: 380px;
+    }
+
+    .couple-name {
+        font-size: clamp(1.35rem, 4.6vw, 1.65rem);
+        line-height: 1.25;
+    }
+
+    .couple-parentage {
+        font-size: clamp(0.78rem, 2.7vw, 0.86rem);
+        font-weight: 600;
+        color: var(--color-text);
+        line-height: 1.35;
+        margin-top: 3px;
+    }
+
+    .couple-connector {
+        margin: 4px auto;
+    }
+
+    .gold-filigree-divider {
+        margin: 8px auto;
+    }
+
+    /* SECTION 3: QURAN VERSE */
+    .quran-inner {
+        max-width: 380px;
+        width: 100%;
+    }
+
+    .quran-arch-frame {
+        padding: 24px 16px;
+        width: 100%;
+    }
+
+    .quran-arabic {
+        font-size: clamp(1.4rem, 4.8vw, 1.75rem);
+        line-height: 1.65;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .quran-english {
+        font-size: clamp(0.98rem, 3.2vw, 1.1rem);
+        line-height: 1.45;
+        color: var(--color-text);
+        margin-bottom: 10px;
+    }
+
+    .quran-reference {
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        color: var(--color-burgundy);
+    }
+
+    /* SECTION 6: ITINERARY */
+    .itinerary-grid {
+        width: 100%;
+        max-width: 380px;
+        gap: 10px;
+    }
+
+    .itinerary-card {
+        padding: 12px 12px;
+        width: 100%;
+    }
+
+    .itinerary-day-tag {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        color: var(--color-burgundy);
+    }
+
+    .itinerary-date {
+        font-size: clamp(1.1rem, 3.8vw, 1.25rem);
+    }
+
+    .itinerary-time {
+        min-width: 68px;
+        font-size: 0.8rem;
+        font-weight: 700;
+    }
+
+    .itinerary-detail strong {
+        font-size: 0.96rem;
+        font-weight: 600;
+        color: var(--color-text);
+    }
+
+    .itinerary-detail span {
+        font-size: 0.78rem;
+        font-weight: 500;
+        color: var(--color-text-muted);
+    }
+
+    .itinerary-venue-note {
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: var(--color-text);
+        line-height: 1.35;
+    }
+
+    /* SECTION 7: CALENDAR INTERACTIVE */
+    .cal-interactive-inner {
+        width: 100%;
+        max-width: 360px;
+        margin: 0 auto;
+    }
+
+    .cal-select-eyebrow {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        color: var(--color-burgundy);
+    }
+
+    .cal-select-heading {
+        font-size: clamp(2rem, 7vw, 2.5rem);
+        line-height: 1.15;
+    }
+
+    .cal-select-date {
+        font-size: clamp(1.05rem, 3.6vw, 1.25rem);
+        font-weight: 600;
+        color: var(--color-burgundy);
+    }
+
+    .cal-selector-pills {
+        width: 100%;
+        max-width: 320px;
+        gap: 7px;
+    }
+
+    .cal-pill-btn {
+        padding: 10px 14px;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+    }
+
+    .cal-selection-desc {
+        font-size: clamp(0.94rem, 3.2vw, 1.04rem);
+        font-weight: 600;
+        color: var(--color-burgundy-dark);
+        line-height: 1.5;
+        min-height: 36px;
+        max-width: 320px;
+    }
+
+    .cal-unified-action {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .btn-unified-calendar {
+        font-size: 0.8rem;
+        font-weight: 700;
+        padding: 12px 18px;
+    }
+
+    .cal-smart-badge {
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--color-text-muted);
+    }
+
+    .btn-cal-alt-link {
+        font-size: 0.74rem;
+        font-weight: 600;
+        color: var(--color-burgundy);
+    }
+
+    /* SECTIONS 10 & 11: DEDICATED SATURDAY & SUNDAY */
+    .event-dedicated-card {
+        padding: 16px 14px;
+        max-width: 380px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .event-badge-pill {
+        font-size: 0.72rem;
+        font-weight: 700;
+        padding: 3px 12px;
+        letter-spacing: 0.18em;
+    }
+
+    .event-day-heading {
+        font-size: clamp(1.75rem, 5.8vw, 2.15rem);
+    }
+
+    .event-full-date {
+        font-size: clamp(0.98rem, 3.4vw, 1.12rem);
+        font-weight: 600;
+        color: var(--color-burgundy);
+        margin-bottom: 10px;
+    }
+
+    .event-timings-strip {
+        padding: 8px 12px;
+        gap: 12px;
+        margin-bottom: 12px;
+    }
+
+    .timing-label {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        color: var(--color-burgundy);
+    }
+
+    .timing-val {
+        font-size: clamp(1.15rem, 3.8vw, 1.35rem);
+        font-weight: 700;
+        color: var(--color-burgundy-dark);
+    }
+
+    .venue-type-tag {
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        color: var(--color-burgundy);
+    }
+
+    .venue-name {
+        font-size: clamp(1.22rem, 4.2vw, 1.42rem);
+        font-weight: 600;
+        color: var(--color-burgundy);
+    }
+
+    .venue-house-name {
+        font-size: 0.92rem;
+        font-weight: 700;
+        color: var(--color-burgundy-dark);
+    }
+
+    .venue-address {
+        font-size: clamp(0.82rem, 2.8vw, 0.9rem);
+        color: var(--color-text);
+        font-weight: 500;
+        line-height: 1.45;
+        margin-bottom: 10px;
+    }
+
+    .btn-location-link {
+        padding: 8px 18px;
+        font-size: 0.76rem;
+        font-weight: 600;
+    }
+
+    /* SECTION 12: FAMILY BLESSINGS */
+    .family-intro {
+        font-size: clamp(0.98rem, 3.4vw, 1.08rem);
+        font-weight: 600;
+        color: var(--color-burgundy-dark);
+        line-height: 1.55;
+        margin-bottom: 10px;
+        max-width: 360px;
+    }
+
+    .family-members-grid {
+        width: 100%;
+        max-width: 380px;
+        gap: 8px;
+    }
+
+    .family-card {
+        padding: 12px 10px;
+        width: 100%;
+    }
+
+    .family-card-tag {
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        color: var(--color-burgundy);
+        margin-bottom: 4px;
+    }
+
+    .family-person-name {
+        font-size: clamp(1.15rem, 3.8vw, 1.3rem);
+        font-weight: 600;
+        color: var(--color-burgundy);
+    }
+
+    .family-person-parentage {
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: var(--color-text);
+        line-height: 1.35;
+    }
+
+    /* SECTION 13: COUNTDOWN */
+    .countdown-target-text {
+        font-size: clamp(0.98rem, 3.4vw, 1.12rem);
+        font-weight: 600;
+        color: var(--color-burgundy);
+        margin-bottom: 14px;
+    }
+
+    .countdown-boxes {
+        gap: 6px;
+        max-width: 360px;
+        width: 100%;
+    }
+
+    .cd-box {
+        padding: 10px 3px;
+    }
+
+    .cd-num {
+        font-size: clamp(1.5rem, 5.2vw, 1.95rem);
+        font-weight: 700;
+        color: var(--color-burgundy);
+    }
+
+    .cd-label {
+        font-size: 0.66rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        color: var(--color-burgundy);
+    }
+
+
+    /* SECTION 15: FINAL CLOSING */
+    .closing-inner {
+        max-width: 360px;
+        width: 100%;
+    }
+
+    .closing-arabic {
+        font-size: clamp(1.35rem, 4.6vw, 1.7rem);
+        font-weight: 700;
+        color: var(--color-burgundy-dark);
+        margin-bottom: 4px;
+    }
+
+    .closing-title {
+        font-size: clamp(1.45rem, 4.8vw, 1.8rem);
+        font-weight: 600;
+        color: var(--color-burgundy);
+    }
+
+    .closing-message {
+        font-size: clamp(1rem, 3.5vw, 1.12rem);
+        font-weight: 600;
+        color: var(--color-burgundy-dark);
+        line-height: 1.55;
+        margin: 8px auto;
+    }
+
+    .closing-dates-note {
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        color: var(--color-burgundy);
+        margin-bottom: 10px;
+    }
+
+    .closing-family-signature {
+        font-size: clamp(1.15rem, 3.8vw, 1.35rem);
+        font-weight: 600;
+        color: var(--color-burgundy);
+        margin-bottom: 10px;
+    }
+
+}
+
+/* COMPACT VERTICAL PHONE SCREENS (HEIGHT <= 700PX, E.G. IPHONE SE, RETRACTED SAFARI) */
+@media (max-height: 700px) and (max-width: 480px) {
+    .section {
+        padding: 16px 12px;
+        justify-content: center;
+    }
+
+    .couple-card {
+        padding: 8px 10px;
+        margin-bottom: 4px;
+    }
+
+    .invitation-lead {
+        margin: 4px auto 8px;
+    }
+
+    .gold-filigree-divider {
+        margin: 4px auto;
+    }
+
+    .quran-arch-frame {
+        padding: 18px 14px;
+    }
+
+    .itinerary-grid {
+        gap: 8px;
+    }
+
+    .itinerary-card {
+        padding: 8px 10px;
+    }
+
+    .itinerary-timeline {
+        margin-bottom: 6px;
+        gap: 6px;
+    }
+
+    .event-dedicated-card {
+        padding: 12px 10px;
+        margin: 0 auto;
+    }
+
+    .event-timings-strip {
+        padding: 6px 10px;
+        margin-bottom: 8px;
+    }
+
+    .venue-address {
+        margin-bottom: 6px;
+    }
+
+    .family-card {
+        padding: 8px 10px;
+    }
+
+    .countdown-boxes {
+        gap: 4px;
+    }
+
+    .cd-box {
+        padding: 8px 2px;
+    }
+
+}
+
+/* NARROW MOBILE SCREENS (WIDTH <= 360PX) */
+@media (max-width: 360px) {
+    .corner-flower-tl,
+    .corner-flower-tr,
+    .corner-flower-bl,
+    .corner-flower-br {
+        width: clamp(140px, 44vw, 185px);
+    }
+    .fixed-nav {
+        width: calc(100% - 16px);
+    }
+    .nav-container {
+        padding: 6px 8px;
+        gap: 12px;
+    }
+    .nav-item {
+        font-size: 0.65rem;
+        letter-spacing: 0.06em;
+    }
+    .couple-name {
+        font-size: 1.28rem;
+    }
+    .couple-parentage {
+        font-size: 0.74rem;
+    }
+    .itinerary-time {
+        min-width: 60px;
+        font-size: 0.76rem;
+    }
+    .event-day-heading {
+        font-size: 1.65rem;
+    }
+    .venue-name {
+        font-size: 1.18rem;
+    }
+    .countdown-boxes {
+        gap: 4px;
+    }
+    .cd-box {
+        padding: 8px 2px;
+    }
+    .cd-num {
+        font-size: 1.45rem;
+    }
+    .cd-label {
+        font-size: 0.6rem;
+        letter-spacing: 0.1em;
+    }
+    .cal-pill-btn {
+        font-size: 0.68rem;
+        padding: 8px 10px;
+    }
+    .btn-unified-calendar {
+        font-size: 0.75rem;
+        padding: 10px 14px;
+    }
+}
+
+@media (min-width: 768px) {
+    .invitation-container {
+        margin: 0 auto;
+        min-height: 100vh;
+        box-shadow: 0 0 50px rgba(69, 18, 30, 0.12);
+        border-left: 1px solid rgba(184, 154, 104, 0.3);
+        border-right: 1px solid rgba(184, 154, 104, 0.3);
+    }
+    .fixed-nav {
+        top: auto;
+        bottom: 24px;
+    }
+    .music-fab {
+        top: 24px;
+        right: 24px;
+    }
+}
