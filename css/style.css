@@ -401,12 +401,12 @@ body {
 /* Opening Card - Strictly aligned within the central empty space of the artwork */
 .opening-card {
     position: absolute;
-    top: 25.5%;
-    bottom: 25%;
+    top: 24.5%;
+    bottom: 19%;
     left: 50%;
     transform: translateX(-50%);
     width: 90%;
-    max-width: 340px;
+    max-width: 350px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -421,8 +421,9 @@ body {
     padding: 3px 14px;
     border: 1px solid var(--color-gold);
     border-radius: var(--radius-pill);
-    margin-bottom: clamp(4px, 0.9vh, 8px);
-    background: rgba(250, 247, 240, 0.75);
+    margin-bottom: clamp(6px, 1.2vh, 10px);
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 8px rgba(101, 29, 44, 0.06);
     backdrop-filter: blur(3px);
 }
 
@@ -436,24 +437,24 @@ body {
 
 .opening-eyebrow {
     font-family: var(--font-sans);
-    font-size: clamp(0.66rem, 1.8vw, 0.72rem);
+    font-size: clamp(0.68rem, 2vw, 0.74rem);
     letter-spacing: 0.22em;
     font-weight: 700;
     color: var(--color-burgundy);
-    margin-bottom: clamp(4px, 0.9vh, 8px);
+    margin-bottom: clamp(6px, 1.2vh, 10px);
 }
 
 .opening-title {
     font-family: var(--font-serif);
     font-weight: 600;
     color: var(--color-burgundy);
-    margin-bottom: clamp(4px, 0.9vh, 8px);
+    margin-bottom: clamp(6px, 1.2vh, 10px);
     line-height: 1.22;
 }
 
 .opening-couple-name {
     display: block;
-    font-size: clamp(1.22rem, 3.8vw, 1.55rem);
+    font-size: clamp(1.25rem, 4vw, 1.62rem);
     letter-spacing: 0.02em;
     white-space: nowrap;
 }
@@ -473,8 +474,8 @@ body {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    width: clamp(90px, 25vw, 115px);
-    margin: clamp(3px, 0.8vh, 6px) auto;
+    width: clamp(90px, 25vw, 120px);
+    margin: clamp(4px, 1vh, 8px) auto;
 }
 
 .gold-hairline-ornament .hairline-left,
@@ -492,25 +493,25 @@ body {
 
 .opening-date {
     font-family: var(--font-serif);
-    font-size: clamp(0.82rem, 2.4vw, 0.96rem);
-    letter-spacing: 0.12em;
+    font-size: clamp(0.85rem, 2.6vw, 1.02rem);
+    letter-spacing: 0.14em;
     font-weight: 600;
     color: var(--color-burgundy);
-    margin-top: clamp(3px, 0.8vh, 6px);
+    margin-top: clamp(4px, 1vh, 8px);
     white-space: nowrap;
 }
 
 .opening-location {
     font-family: var(--font-sans);
-    font-size: clamp(0.66rem, 2vw, 0.72rem);
+    font-size: clamp(0.68rem, 2vw, 0.74rem);
     letter-spacing: 0.2em;
     font-weight: 600;
     color: var(--color-text);
-    margin-bottom: clamp(8px, 1.6vh, 14px);
+    margin-bottom: clamp(12px, 2vh, 18px);
 }
 
 .opening-cta-wrap {
-    margin-top: clamp(2px, 0.6vh, 6px);
+    margin-top: clamp(4px, 0.8vh, 8px);
 }
 
 .btn-tap-open {
@@ -522,13 +523,13 @@ body {
     color: var(--color-ivory-warm);
     border: 1.5px solid var(--color-gold);
     border-radius: var(--radius-pill);
-    padding: clamp(8px, 1.4vh, 11px) clamp(20px, 4.5vw, 26px);
+    padding: clamp(9px, 1.6vh, 12px) clamp(22px, 5vw, 28px);
     font-family: var(--font-sans);
-    font-size: clamp(0.74rem, 2.2vw, 0.8rem);
+    font-size: clamp(0.76rem, 2.4vw, 0.82rem);
     font-weight: 700;
     letter-spacing: 0.18em;
     cursor: pointer;
-    box-shadow: 0 4px 16px rgba(101, 29, 44, 0.24);
+    box-shadow: 0 4px 18px rgba(101, 29, 44, 0.28);
     transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
     touch-action: manipulation;
     white-space: nowrap;
@@ -548,12 +549,11 @@ body {
 
 .tap-hint {
     font-family: var(--font-sans);
-    font-size: clamp(0.58rem, 1.7vw, 0.64rem);
+    font-size: clamp(0.6rem, 1.8vw, 0.66rem);
     letter-spacing: 0.06em;
     color: var(--color-burgundy-dark);
-    opacity: 0.82;
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.7);
-    margin-top: clamp(5px, 1vh, 8px);
+    opacity: 0.85;
+    margin-top: clamp(6px, 1.2vh, 10px);
     white-space: nowrap;
 }
 
@@ -1890,15 +1890,16 @@ body {
     }
 
     .opening-card {
-        width: 88%;
-        max-width: 320px;
+        width: 90%;
+        max-width: 330px;
         top: 24%;
-        bottom: 27%;
+        bottom: 20%;
     }
 
     .opening-monogram {
         padding: 3px 12px;
         margin-bottom: clamp(3px, 0.8vh, 6px);
+        background: rgba(255, 255, 255, 0.9);
     }
 
     .monogram-text {
@@ -1927,28 +1928,28 @@ body {
     }
 
     .opening-date {
-        font-size: clamp(0.78rem, 2.2vw, 0.92rem);
+        font-size: clamp(0.8rem, 2.4vw, 0.94rem);
         letter-spacing: 0.12em;
-        margin-top: clamp(2px, 0.6vh, 5px);
+        margin-top: clamp(3px, 0.7vh, 6px);
     }
 
     .opening-location {
         font-size: 0.68rem;
         letter-spacing: 0.18em;
-        margin-bottom: clamp(6px, 1.2vh, 10px);
+        margin-bottom: clamp(8px, 1.4vh, 12px);
     }
 
     .btn-tap-open {
-        padding: 9px 20px;
+        padding: 9px 22px;
         font-size: 0.76rem;
         letter-spacing: 0.16em;
     }
 
     .tap-hint {
-        font-size: clamp(0.55rem, 1.6vw, 0.62rem);
-        max-width: 220px;
+        font-size: clamp(0.56rem, 1.6vw, 0.62rem);
+        max-width: 240px;
         line-height: 1.35;
-        margin: 5px auto 0;
+        margin: 6px auto 0;
         opacity: 0.85;
     }
 
