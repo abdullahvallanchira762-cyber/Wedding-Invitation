@@ -364,7 +364,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 16px;
+    padding: 0;
     overflow: hidden;
     touch-action: none;
     overscroll-behavior: none;
@@ -379,121 +379,83 @@ body {
     pointer-events: none;
 }
 
-/* Floral Overlay Placements (Pure Overlays) */
-.floral-decoration {
-    position: absolute;
-    pointer-events: none;
-    user-select: none;
-    z-index: 2;
-}
-
-.floral-img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-}
-
-/* Opening Screen Florals */
-.opening-floral-top {
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    max-width: 650px;
-    margin: 0 auto;
-}
-
-.opening-floral-top .floral-img-top {
-    width: 100%;
-    max-height: clamp(140px, 24vh, 220px);
-    object-fit: cover;
-    object-position: top center;
-}
-
-.opening-floral-bottom {
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    max-width: 650px;
-    margin: 0 auto;
-}
-
-.opening-floral-bottom .floral-img-bottom {
-    width: 100%;
-    max-height: clamp(140px, 24vh, 220px);
-    object-fit: cover;
-    object-position: bottom center;
-}
-
-.opening-floral-left {
-    top: 35%;
-    left: 0;
-    width: clamp(70px, 18vw, 130px);
-}
-
-.opening-floral-right {
-    top: 40%;
-    right: 0;
-    width: clamp(70px, 18vw, 130px);
-}
-
-.opening-card {
+/* Opening Card Stage - Framed container holding the custom couple illustration */
+.opening-card-stage {
     position: relative;
-    z-index: 10;
-    max-width: 420px;
     width: 100%;
+    max-width: min(540px, calc(100dvh * 576 / 1024));
+    height: 100%;
+    max-height: 100dvh;
+    background-image: url('../images/opening-cover.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 40px rgba(69, 18, 30, 0.2), 0 0 0 1px rgba(184, 154, 104, 0.2);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+}
+
+/* Opening Card - Strictly aligned within the central empty space of the artwork */
+.opening-card {
+    position: absolute;
+    top: 25.5%;
+    bottom: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 340px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    padding: clamp(24px, 6vh, 40px) 16px;
-    margin: 0 auto;
+    z-index: 10;
+    pointer-events: auto;
 }
 
 .opening-monogram {
     display: inline-block;
-    padding: 4px 14px;
+    padding: 3px 14px;
     border: 1px solid var(--color-gold);
     border-radius: var(--radius-pill);
-    margin-bottom: 12px;
+    margin-bottom: clamp(4px, 0.9vh, 8px);
+    background: rgba(250, 247, 240, 0.75);
+    backdrop-filter: blur(3px);
 }
 
 .monogram-text {
     font-family: var(--font-serif);
-    font-size: 0.85rem;
+    font-size: clamp(0.76rem, 2vw, 0.82rem);
     font-weight: 600;
     letter-spacing: 0.2em;
     color: var(--color-gold);
 }
 
-.opening-arabic {
-    font-family: var(--font-arabic);
-    font-size: clamp(1.25rem, 4.2vw, 1.45rem);
-    color: var(--color-burgundy-dark);
-    margin-bottom: 8px;
-    line-height: 1.5;
-    font-weight: 700;
-}
-
 .opening-eyebrow {
     font-family: var(--font-sans);
-    font-size: clamp(0.72rem, 2.5vw, 0.78rem);
+    font-size: clamp(0.66rem, 1.8vw, 0.72rem);
     letter-spacing: 0.22em;
     font-weight: 700;
     color: var(--color-burgundy);
-    margin-bottom: 12px;
+    margin-bottom: clamp(4px, 0.9vh, 8px);
 }
 
 .opening-title {
     font-family: var(--font-serif);
     font-weight: 600;
     color: var(--color-burgundy);
-    margin-bottom: 14px;
-    line-height: 1.25;
+    margin-bottom: clamp(4px, 0.9vh, 8px);
+    line-height: 1.22;
 }
 
 .opening-couple-name {
     display: block;
-    font-size: clamp(1.45rem, 5.5vw, 1.85rem);
+    font-size: clamp(1.22rem, 3.8vw, 1.55rem);
     letter-spacing: 0.02em;
+    white-space: nowrap;
 }
 
 .opening-ampersand {
@@ -501,51 +463,75 @@ body {
     font-family: var(--font-serif);
     font-style: italic;
     font-weight: 400;
-    font-size: 1.3rem;
+    font-size: clamp(1rem, 2.8vw, 1.2rem);
     color: var(--color-gold);
-    margin: 2px 0;
+    margin: 1px 0;
+}
+
+.gold-hairline-ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: clamp(90px, 25vw, 115px);
+    margin: clamp(3px, 0.8vh, 6px) auto;
+}
+
+.gold-hairline-ornament .hairline-left,
+.gold-hairline-ornament .hairline-right {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--color-gold), transparent);
+}
+
+.gold-hairline-ornament .hairline-diamond {
+    font-size: 0.5rem;
+    color: var(--color-gold);
+    line-height: 1;
 }
 
 .opening-date {
     font-family: var(--font-serif);
-    font-size: clamp(1rem, 3.6vw, 1.2rem);
-    letter-spacing: 0.16em;
+    font-size: clamp(0.82rem, 2.4vw, 0.96rem);
+    letter-spacing: 0.12em;
     font-weight: 600;
     color: var(--color-burgundy);
-    margin-top: 10px;
+    margin-top: clamp(3px, 0.8vh, 6px);
+    white-space: nowrap;
 }
 
 .opening-location {
     font-family: var(--font-sans);
-    font-size: 0.78rem;
-    letter-spacing: 0.22em;
+    font-size: clamp(0.66rem, 2vw, 0.72rem);
+    letter-spacing: 0.2em;
     font-weight: 600;
     color: var(--color-text);
-    margin-bottom: 22px;
+    margin-bottom: clamp(8px, 1.6vh, 14px);
 }
 
 .opening-cta-wrap {
-    margin-top: 10px;
+    margin-top: clamp(2px, 0.6vh, 6px);
 }
 
 .btn-tap-open {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
     background: var(--color-burgundy);
     color: var(--color-ivory-warm);
     border: 1.5px solid var(--color-gold);
     border-radius: var(--radius-pill);
-    padding: 12px 28px;
+    padding: clamp(8px, 1.4vh, 11px) clamp(20px, 4.5vw, 26px);
     font-family: var(--font-sans);
-    font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 0.2em;
+    font-size: clamp(0.74rem, 2.2vw, 0.8rem);
+    font-weight: 700;
+    letter-spacing: 0.18em;
     cursor: pointer;
-    box-shadow: 0 4px 16px rgba(101, 29, 44, 0.22);
+    box-shadow: 0 4px 16px rgba(101, 29, 44, 0.24);
     transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
     touch-action: manipulation;
+    white-space: nowrap;
 }
 
 .btn-tap-open:hover,
@@ -562,10 +548,13 @@ body {
 
 .tap-hint {
     font-family: var(--font-sans);
-    font-size: 0.7rem;
-    letter-spacing: 0.08em;
-    color: var(--color-text-subtle);
-    margin-top: 10px;
+    font-size: clamp(0.58rem, 1.7vw, 0.64rem);
+    letter-spacing: 0.06em;
+    color: var(--color-burgundy-dark);
+    opacity: 0.82;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.7);
+    margin-top: clamp(5px, 1vh, 8px);
+    white-space: nowrap;
 }
 
 /* ============================================================
@@ -1856,7 +1845,7 @@ body {
    768px (Tablet)
    1024px+ / 1440px (Desktop Centered Stationery)
    ============================================================ */
-@media (max-width: 480px) {
+@media (max-width: 580px) {
 
     /* Section Sizing, Alignment & Safe Areas */
     .section {
@@ -1887,81 +1876,80 @@ body {
 
     /* SECTION 1: OPENING SCREEN MOBILE CLARITY */
     .opening-screen {
-        padding: 12px;
+        padding: 0;
+    }
+
+    .opening-card-stage {
+        max-width: 100vw;
+        width: 100vw;
+        height: 100dvh;
+        border-radius: 0;
+        box-shadow: none;
+        background-size: 100% 100%;
+        background-position: center center;
     }
 
     .opening-card {
-        padding: clamp(18px, 4vh, 30px) 10px;
-        max-width: 360px;
-        width: 100%;
+        width: 88%;
+        max-width: 320px;
+        top: 24%;
+        bottom: 27%;
     }
 
     .opening-monogram {
         padding: 3px 12px;
-        margin-bottom: 10px;
+        margin-bottom: clamp(3px, 0.8vh, 6px);
     }
 
     .monogram-text {
-        font-size: 0.78rem;
+        font-size: 0.74rem;
         letter-spacing: 0.18em;
     }
 
-    .opening-arabic {
-        font-size: clamp(1.25rem, 4.4vw, 1.45rem);
-        line-height: 1.5;
-        font-weight: 700;
-        margin-bottom: 6px;
-    }
-
     .opening-eyebrow {
-        font-size: 0.72rem;
-        letter-spacing: 0.22em;
-        font-weight: 700;
-        color: var(--color-burgundy);
-        margin-bottom: 10px;
+        font-size: 0.66rem;
+        letter-spacing: 0.2em;
+        margin-bottom: clamp(3px, 0.8vh, 6px);
     }
 
     .opening-title {
-        margin-bottom: 10px;
+        margin-bottom: clamp(3px, 0.8vh, 6px);
     }
 
     .opening-couple-name {
-        font-size: clamp(1.45rem, 5.2vw, 1.8rem);
+        font-size: clamp(1.18rem, 4.2vw, 1.48rem);
         line-height: 1.22;
     }
 
     .opening-ampersand {
-        font-size: 1.25rem;
-        margin: 2px 0;
+        font-size: 1.1rem;
+        margin: 1px 0;
     }
 
     .opening-date {
-        font-size: clamp(0.98rem, 3.5vw, 1.15rem);
-        letter-spacing: 0.16em;
-        font-weight: 600;
-        margin-top: 8px;
+        font-size: clamp(0.78rem, 2.2vw, 0.92rem);
+        letter-spacing: 0.12em;
+        margin-top: clamp(2px, 0.6vh, 5px);
     }
 
     .opening-location {
-        font-size: 0.76rem;
-        font-weight: 600;
-        letter-spacing: 0.2em;
-        color: var(--color-text);
-        margin-bottom: 16px;
+        font-size: 0.68rem;
+        letter-spacing: 0.18em;
+        margin-bottom: clamp(6px, 1.2vh, 10px);
     }
 
     .btn-tap-open {
-        padding: 12px 24px;
-        font-size: 0.82rem;
-        font-weight: 700;
-        letter-spacing: 0.18em;
+        padding: 9px 20px;
+        font-size: 0.76rem;
+        letter-spacing: 0.16em;
     }
 
     .tap-hint {
-        font-size: 0.74rem;
-        font-weight: 500;
-        color: var(--color-text-muted);
-        margin-top: 8px;
+        font-size: clamp(0.55rem, 1.6vw, 0.62rem);
+        max-width: 220px;
+        line-height: 1.35;
+        margin: 5px auto 0;
+        opacity: 0.85;
     }
 
     /* SECTION 2: HERO COUPLE */

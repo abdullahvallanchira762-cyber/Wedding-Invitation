@@ -62,56 +62,48 @@
 
     <!-- ============================================================ -->
     <!-- SECTION 1: OPENING SCREEN                                    -->
-    <!-- Resembles the primary floral reference composition            -->
     <!-- ============================================================ -->
     <div class="opening-screen" id="openingScreen" role="dialog" aria-modal="true"
         aria-label="Wedding Invitation Envelope">
-        <!-- Overlay Floral Frame -->
-        <div class="floral-decoration opening-floral-top" aria-hidden="true">
-            <img src="images/floral/floral-top-fade.png" alt="" class="floral-img floral-img-top">
-        </div>
-        <div class="floral-decoration opening-floral-bottom" aria-hidden="true">
-            <img src="images/floral/floral-bottom-fade.png" alt="" class="floral-img floral-img-bottom">
-        </div>
+        <!-- Opening Card Stage with custom floral couple background -->
+        <div class="opening-card-stage" id="openingCardStage">
+            <!-- Center Content Card -->
+            <div class="opening-card">
+                <div class="opening-monogram" aria-hidden="true">
+                    <span class="monogram-text">F & A • F & R</span>
+                </div>
 
-        <!-- Center Content Card -->
-        <div class="opening-card">
-            <div class="opening-monogram" aria-hidden="true">
-                <span class="monogram-text">F & A • F & R</span>
-            </div>
+                <p class="opening-eyebrow">THE WEDDING INVITATION</p>
 
-            <p class="opening-arabic" lang="ar" dir="rtl">بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ</p>
+                <h1 class="opening-title">
+                    <span class="opening-couple-name">Dr. Favas & Ayesha</span>
+                    <span class="opening-ampersand">&amp;</span>
+                    <span class="opening-couple-name">Dr. Fanseem & Rafna</span>
+                </h1>
 
-            <p class="opening-eyebrow">THE WEDDING INVITATION</p>
+                <div class="gold-hairline-ornament" aria-hidden="true">
+                    <span class="hairline-left"></span>
+                    <span class="hairline-diamond">◆</span>
+                    <span class="hairline-right"></span>
+                </div>
 
-            <h1 class="opening-title">
-                <span class="opening-couple-name">Dr. Favas & Ayesha</span>
-                <span class="opening-ampersand">&amp;</span>
-                <span class="opening-couple-name">Dr. Fanseem & Rafna</span>
-            </h1>
+                <p class="opening-date">12 &amp; 13 DECEMBER 2026</p>
+                <p class="opening-location">CALICUT, KERALA</p>
 
-            <div class="gold-hairline-ornament" aria-hidden="true">
-                <span class="hairline-left"></span>
-                <span class="hairline-diamond">◆</span>
-                <span class="hairline-right"></span>
-            </div>
-
-            <p class="opening-date">12 &amp; 13 DECEMBER 2026</p>
-            <p class="opening-location">CALICUT, KERALA</p>
-
-            <div class="opening-cta-wrap">
-                <button type="button" class="btn-tap-open" id="btnTapOpen"
-                    aria-label="Tap to open the wedding invitation">
-                    <span class="btn-wax-seal" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18"
-                            height="18">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <path d="M12 6v12M8 12h8"></path>
-                        </svg>
-                    </span>
-                    <span class="btn-text">TAP TO OPEN</span>
-                </button>
-                <p class="tap-hint">Tap to open or scroll down • Music will begin</p>
+                <div class="opening-cta-wrap">
+                    <button type="button" class="btn-tap-open" id="btnTapOpen"
+                        aria-label="Tap to open the wedding invitation">
+                        <span class="btn-wax-seal" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18"
+                                height="18">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M12 6v12M8 12h8"></path>
+                            </svg>
+                        </span>
+                        <span class="btn-text">TAP TO OPEN</span>
+                    </button>
+                    <p class="tap-hint">Tap to open or scroll down • Music will begin</p>
+                </div>
             </div>
         </div>
     </div>
